@@ -1,0 +1,540 @@
+body{
+    margin:0;
+    font-family: 'Roboto Slab',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+}
+/* Nav section starts here */
+.navbar{
+    display: flex;
+    justify-content: flex-start;
+    background: #142b47;
+    height: 80px;
+    flex: 1;
+}
+.logo-image{
+    margin: 10px auto 18px 30px;
+    padding-top: 9.5px; 
+    width:30%;
+}
+.img-button{
+    margin-top: 10px;
+    padding-left: 10px;
+}
+.svg{
+    margin-top: 22px;
+    margin-left: 20px;
+    margin-right: auto;
+    padding-right: 20px;
+    display: none;
+}
+.search-form{
+    margin-top: 22px;
+    font-size: 16px;
+}
+nav > ul{
+    margin: 12px 30px 16px 0;
+}
+li{
+    display: inline-block;
+    padding: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 11px;
+}
+li a{
+    text-decoration: none;
+    color: white;
+}
+li a:hover{
+    color: rgb(255, 224, 50);
+}
+form input[type="text"],input[type="button"]{
+    border: none;
+    padding: 8px; 
+    font-size: 15px; 
+}
+form input[type="button"]{
+    border: none;
+    background:rgb(255, 224, 50);
+    font-weight: bold;
+    color: white;
+    float: left;
+    border-radius: 3px 0 0 3px;
+}
+li input [placeholder]{
+    font-size: 15px;
+}
+.side-nav{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    opacity: 0.9;
+    overflow-x:hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+.side-nav a{
+    margin-top: 20px;
+    padding: 10px 8px 10px 30px;
+    text-decoration: none;
+    font-size: 20px;
+    color:#ccc;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-nav a:hover{
+    color:#fff;
+}
+.side-nav .btn-close{
+    position: absolute;
+    top: 0;
+    right: 22px;
+    font-size: 36px;
+    margin-left: 60px;
+}
+.side-nav img{
+    display: none;
+    margin-left: 20px;
+}
+#main{
+    transition: margin-left 0.5s;
+}
+/* Nav Section ends here */
+/* Dashboard button */
+.my-prop-btn{
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 20px;
+}
+.my-prop-btn input[type=button]{
+    background: rgba(57, 126, 255, 0.877);
+    color: white;
+    font-weight: 400;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 3px;
+}
+.my-prop-btn input[type=button]:hover{
+    cursor: pointer;
+}
+/* Dashboard button */
+/* Container section starts here */
+.container{
+    margin: 0 50px;
+}
+/* Apartments section */
+.apartments{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.075);
+    padding: 20px;
+}
+.apartments section img{
+    width: 260px;
+    height: 170px;
+}
+.apartments section{
+    display: flex;
+    height: 170px;
+    margin: 10px;
+    padding: 20px;
+    border: 5px solid rgba(21, 142, 255, 0.50);
+    border-radius: 8px;
+    background: white;
+}
+.apartments section .text{
+    margin: 0 auto 0 20px;
+}
+.apartments section .flag-icon{
+    display: flex;
+    align-items: center;
+}
+.apartments section .flag-icon:hover{
+    cursor: pointer;
+}
+.apartments section .text .status{
+    color: rgb(10, 117, 42);
+    font-weight: bold;
+}
+.apartments section .text .prop-name{
+    margin: 0;
+}
+.apartments a{
+    margin: 10px auto;
+}
+.apartments input[type=button]{
+    font-weight: 550;
+}
+.apartments input[type=button]:hover{
+    background: rgb(174, 174, 197);
+    cursor: pointer;
+}
+
+/* Apartment section ends */
+/* Hotel section */
+/* Hotel Section ends */
+
+/** House section starts */
+.houses{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.075);
+    padding: 20px;
+    margin: 40px 0;
+}
+.houses section img{
+    width: 260px;
+    height: 170px;
+}
+.houses section{
+    display: flex;
+    height: 170px;
+    margin: 10px;
+    padding: 20px;
+    border: 5px solid rgba(21, 142, 255, 0.50);
+    border-radius: 8px;
+    background: white;
+}
+.houses section .text{
+    margin: 0 auto 0 20px;
+}
+.houses section .flag-icon{
+    display: flex;
+    align-items: center;
+}
+.houses section .flag-icon:hover{
+    display: flex;
+    align-items: center;
+}
+.houses section .text .status{
+    color: rgb(10, 117, 42);
+    font-weight: bold;
+}
+.houses section .text .prop-name{
+    margin: 0;
+}
+.houses a{
+    margin: 10px auto;
+}
+.houses input[type=button]{
+    font-weight: 550;
+}
+.houses input[type=button]:hover{
+    background: rgb(174, 174, 197);
+    cursor: pointer;
+}
+/** House section ends */
+/** Villa section starts */
+.villas{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.075);
+    padding: 20px;
+    margin: 40px 0;
+}
+.villas section img{
+    width: 260px;
+    height: 170px;
+}
+.villas section{
+    display: flex;
+    height: 170px;
+    margin: 10px;
+    padding: 20px;
+    border: 5px solid rgba(21, 142, 255, 0.50);
+    border-radius: 8px;
+    background: white;
+}
+.villas section .text{
+    margin: 0 auto 0 20px;
+}
+.villas section .flag-icon{
+    display: flex;
+    align-items: center;
+}
+.villas section .flag-icon{
+    cursor: pointer;
+}
+.villas section .text .status{
+    color: rgb(10, 117, 42);
+    font-weight: bold;
+}
+.villas section .text .prop-name{
+    margin: 0;
+}
+.villas a{
+    margin: 10px auto;
+}
+.villas input[type=button]{
+    font-weight: 550;
+}
+.villas input[type=button]:hover{
+    background: rgb(174, 174, 197);
+    cursor: pointer;
+}
+/** Villa section ends */
+/* Container section ends here */
+
+/* Footer section starts */
+/* Report section */
+.popup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    width: 100%;
+    height: 1608px;
+    background: rgb(17, 17, 17,0.5);
+    position: absolute;
+}
+.report{
+    display: block;
+    position: absolute;
+    top: 550px;
+    right: 289px;
+    left: 407px;
+    width: 500px;
+    height: 300px;
+    margin: 50px auto;
+    background: #142b47; 
+}
+.report form{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    width: 400px;  
+    margin: 30px auto 0 60px;
+}
+.report form input, textarea{
+    width: 90%;
+    padding: 10px;
+    border: 1px solid burlywood;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+.report form input[type=submit]{
+    width: 384px;
+    background: #1234ad;
+    font-weight: bold;
+    color: white;
+    border: none;
+    padding: 13px 10px;
+    font-size: 17px;
+}
+.report form input[type=submit]:hover{
+    cursor: pointer;
+}
+.report form h3{
+    color: white;
+    text-align: center;
+    font-weight: lighter;
+    font-size: 25px;
+}
+.report i{
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 0;
+    left: 470px;
+    width: 0;
+}
+.report i:hover{
+    cursor: pointer;
+}
+i:hover{
+    cursor: pointer;
+}
+/* Report section ends */
+footer{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background: #142b47; 
+    width: 100%;
+    height: 100%;
+}
+footer p{
+    color: white;
+    text-align: center;
+}
+footer a{
+    margin: 20px auto 5px auto;
+    width: 120px;
+}
+footer img,ul{
+    margin: 0 auto;
+}
+/* Footer section ends */
+
+/* Mdeia queries start */
+@media (max-width:1085px){
+    nav > ul{
+        display: none;
+    }
+    .svg{
+        display: block; 
+        margin-top: 25px;      
+    }
+}
+@media (max-width:555px){
+    .logo-image{
+        display: none;
+    }
+    .side-nav img{
+        display: block;
+    }
+    form input[type="text"]{
+        border: none;
+        padding: 8px; 
+        font-size: 15px;
+        width: 60%; 
+    }
+}
+@media (max-width:655px){
+    .container{
+        margin: 0 20px;
+    }
+    .apartments section img{
+        width: 150px;
+        height: 150px;
+    }
+    .hotels section img{
+        width: 150px;
+        height: 150px;
+    }
+    .houses section img{
+        width: 150px;
+        height: 150px;
+    }
+    .villas section img{
+        width: 150px;
+        height: 150px;
+    }
+}
+@media (max-width:470px){
+    .apartments section{
+        flex-direction: column;
+        height: 370px;
+    }
+    .apartments section img{
+        width: 100%;
+        height: 200px;
+    }
+    .hotels section{
+        flex-direction: column;
+        height: 370px;
+    }
+    .hotels section img{
+        width: 100%;
+        height: 200px;
+    }
+    .houses section{
+        flex-direction: column;
+        height: 370px;
+    }
+    .houses section img{
+        width: 100%;
+        height: 200px;
+    }
+    .villas section{
+        flex-direction: column;
+        height: 370px;
+    }
+    .villas section img{
+        width: 100%;
+        height: 200px;
+    }
+
+    .apartments section{
+        height: 400px;
+    }
+    .villas section{
+        height: 400px;
+    }
+}
+@media (max-width:380px){
+    footer ul{
+        padding: 0;
+    }
+    @media (max-width:339px) {
+        footer ul li{
+            display: block;
+        }
+    }
+}
+@media (max-width:1085px){
+    .report{
+        left: 200px;
+    }
+    @media (max-width:759px){
+        .report{
+            left: 100px;
+        }
+        @media (max-width:635px){
+            .report{
+                left: 50px;
+            }
+        }
+    }
+    @media (max-width:580px) {
+        .report{
+            width: 400px;
+            height: 280px;
+        }
+        .report form{
+            width:370px;
+            margin:20px;
+        }
+        .report form input[type=submit]{
+            width:120px;
+            margin: 8px auto;
+        }
+        .report i{
+            left: 370px;
+        }
+    }
+}
+@media (max-width:555px){
+    .report form{
+        margin-left: 80px;
+    }
+    .report form textarea{
+        width: 220px;
+    }
+    .report form input[type=submit]{
+        padding: 10px;
+        width: 240px;
+        margin-left: 1px;
+    }
+    @media (max-width:460px){
+        .report form{
+            width: 250px;
+            margin-left: 20px;
+        }
+        .report form input{
+            width: 90%;
+        }
+        .report{
+            width: 280px;
+        }
+        .report i{
+            left: 250px;
+        }
+    }
+}
+@media (max-width:350px){
+    .report{
+        left: 20px;
+    }
+}
+/* End */
