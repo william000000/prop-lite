@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign In</title>
+    <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/signin.css">
+</head>
+<body>
+    <div class="popup">
+        <div class="report">
+            <form action="" class="popup-form">
+                <input type="password" name="" id="newpwd" placeholder="New Password">
+                <input type="password" name="" id="confirmpwd" placeholder="Confirm Password">
+                <input type="submit" value="Reset">
+            </form>
+            <i class="fa fa-times-circle" onclick="closeModal()"></i>
+        </div>
+    </div>
+    <nav class="navbar">
+            <span class="svg">
+                    <a href="#"><img src="../img/svg.png" alt="" onclick="openSlideMenu()"></a>
+            </span> 
+            <div class="logo-img"><img src="../img/Logo12.png" alt="" class="lgo"></div>
+            <ul class="navbar-nav">
+                <li class="home"><a href="../index.html">Home</a></li>
+                <li><a href="properties.html">Properties</a></li>
+                <li><a href="signup.html" class="register">Register</a></li>
+                <li><a href="signin.html" class="login">Login</a></li>
+            </ul>  
+    </nav>
+    <div id="side-menu" class="side-nav">
+        <div class="logo-img"><img src="../img/Logo12.png" alt="" class="logo-show"></div>
+        <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+        <a href="index.html">Home</a>
+        <a href="properties.html">Properties</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="signin.html">Login</a>
+    </div>
+    <div class="container" id="main">
+        <div class="form">
+            <img src="../img/avatarsignin.png" alt="" class="avatar">
+            <h2>Sign In</h2>
+            <form action="">
+                <br><input type="text" name="" id="email" placeholder="email" required>
+                <br><input type="password" name="" id="passwd" placeholder="password" required>
+                <br><button class="button">Sign In</button>
+            </form>
+
+                <a href="../signup.html" class="links">I don't have an account!</a><br>
+                <a href="#"class="links" onclick="showModal()">Forgot your password?</a>
+        </div>
+    </div>
+    <div class="footer">
+        <footer>
+            <p>Copyright &copy; Property PRO Lite 2019</p>
+        </footer>
+    </div>
+    <script src="../js/script.js">
+        
+    </script>
+</body>
+</html>
