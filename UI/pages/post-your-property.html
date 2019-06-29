@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/post-your-property.css">
+    <title>Post your property</title>
+</head>
+<body>
+   <!--Nav section--> 
+    <nav class="navbar">
+        <span class="svg">
+            <a href="#"><img src="../img/svg.png" alt="" onclick="openSlideMenu()"></a>
+        </span>
+        <div class="logo-image img-button"><a href="../index.html"><img src="../img/Logo12.png" class="logo"></a>
+        </div>
+        <!-- <form class="search-form">
+            <input type="button" value="Search" class="search-btn"></li>
+            <input type="text" id="search" placeholder="Search for a property">
+        </form> -->
+        <ul>
+            <li class="home" id="homes"><a href="../index.html">Home</a></li>
+            <li><a href="properties.html">Properties</a></li>
+            <li><a href="signup.html">Register</a></li>
+            <li><a href="signin.html">Login</a></li>
+        </ul>
+    </nav>
+    <div id="side-menu" class="side-nav">
+        <div class="logo-img"><img src="../img/Logo12.png" alt="" class="logo-show"></div>
+        <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+        <a href="../index.html">Home</a>
+        <a href="properties.html">Properties</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="signin.html">Login</a>
+    </div> 
+    <!--Nav section ends-->
+
+    <!-- Main section -->
+    <div class="container">
+        <section class="prop-info">
+            <form autocomplete="off">
+                <h3>Property Info</h3>
+                <select id="status" width="300px">
+                    <option hidden>Property Status</option>
+                    <option value="Sold" disabled>Sold</option>
+                    <option value="Available">Available</option>
+                </select><br>
+                <select id="types">
+                    <option hidden>Property Type</option>
+                    <option value="Apartments">Apartment</option>
+                    <option value="Hotels">Hotel</option>
+                    <option value="Houses">House</option>
+                    <option value="Villas">Villa</option>
+                </select><br>
+                <input type="text" name="" id="city" placeholder="Your City"required><br>
+                <input type="text" name="" id="state" placeholder="Your State"  required><br>
+                <input type="text" name="" id="address" placeholder="Your Sector"  required><br>
+                <input type="number" name="" id="price"  placeholder="Price" required><br>
+                <input type="tel" name="phone" id="phone" placeholder="Your telephone number" required><br>
+                <label for="decription">Description</label><br>
+                <textarea name="" id="" cols="30" rows="5">
+                </textarea>
+                <label for="photo">Photo</label>
+                <input type="file" name="" id="photos"  multiple><br>
+                <input type="submit" value="Submit">       
+            </form>
+        </section>
+    </div>    
+    <!-- Main section ends -->
+    
+    <footer class="footer">
+        <a href="../index.html"><img src="../img/Logo12.png" alt=""></a>
+        <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="properties.html">Properties</a></li>
+            <li><a href="./signup.html">Register</a></li>
+            <li><a href="./signin.html">Login</a></li>
+        </ul>
+        <p class="copyright">Copyright &copy; PROLite 2019</p>
+    </footer>
+
+
+    <script src="../js/script.js">
+        
+    </script>
+</body>
+</html>
