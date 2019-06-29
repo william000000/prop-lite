@@ -1,0 +1,388 @@
+body{
+    margin:0;
+    font-family: 'Roboto Slab',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+}
+/* Nav section starts here */
+.navbar{
+    display: flex;
+    justify-content: flex-start;
+    background: #142b47;
+    height: 80px;
+    flex: 1;
+}
+.logo-image{
+    margin: 10px auto 18px 30px;
+    padding-top: 9.5px; 
+    width:30%;
+}
+.img-button{
+    margin-top: 10px;
+    padding-left: 10px;
+}
+.svg{
+    margin-top: 22px;
+    margin-left: 20px;
+    margin-right: auto;
+    padding-right: 20px;
+    display: none;
+}
+.search-form{
+    margin-top: 22px;
+    font-size: 16px;
+}
+nav > ul{
+    margin: 12px 30px 16px 0;
+}
+li{
+    display: inline-block;
+    padding: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 11px;
+}
+li a{
+    text-decoration: none;
+    color: white;
+}
+li a:hover{
+    color: rgb(255, 224, 50);
+}
+form input[type="text"],input[type="button"]{
+    border: none;
+    padding: 8px; 
+    font-size: 15px; 
+}
+form input[type="button"]{
+    border: none;
+    background:rgb(255, 224, 50);
+    font-weight: bold;
+    color: white;
+    float: left;
+    border-radius: 3px 0 0 3px;
+}
+li input [placeholder]{
+    font-size: 15px;
+}
+.side-nav{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    opacity: 0.9;
+    overflow-x:hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+.side-nav a{
+    margin-top: 20px;
+    padding: 10px 8px 10px 30px;
+    text-decoration: none;
+    font-size: 20px;
+    color:#ccc;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-nav a:hover{
+    color:#fff;
+}
+.side-nav .btn-close{
+    position: absolute;
+    top: 0;
+    right: 22px;
+    font-size: 36px;
+    margin-left: 60px;
+}
+.side-nav img{
+    display: none;
+    margin-left: 20px;
+}
+#main{
+    transition: margin-left 0.5s;
+}
+/* Nav section ends here */
+
+/* container section starts here */
+/** Header section here */
+.container > div{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    margin: 30px 0;
+}
+.image-slider{
+    display: flex;
+    flex: 1;
+    height: 640px;
+    background: url('../img/light.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: slider 20s infinite;
+}
+@keyframes slider{
+    0%{
+        background: url('../img/light2.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    45%{
+        background: url('../img/light3.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    85%{
+        background: url('../img/light.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    100%{
+        background: url('../img/light5.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+.heading{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 300px;
+}
+.heading h4{
+    text-align: center;
+    margin-top: 200px;
+    margin-bottom: 0;
+    color :white;
+    font-weight: normal;
+    font-size: 50px;
+    font-style: italic;
+}
+.heading h1{
+    margin-top: 0;
+    font-size: 60px;
+    color: rgb(251, 253, 255);
+    text-align: center;
+}
+.heading input[type="button"]{
+    align-self: center;
+    background: none;
+    outline: none;
+    border: transparent;
+    background-color: rgb(255, 224, 50);
+    color: white;
+    padding: 18px 20px;
+    font-weight: 800;
+    font-size: 13px;
+    line-height: 1.5em;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+.heading input[type="button"]:hover{
+    background: rgb(252, 193, 32);
+    cursor: pointer;
+    transition: all 0.5s ease-in-out; 
+}
+/** Header section ends */
+
+/** About section starts */
+.about{
+    padding: 60px;
+    background: rgb(20, 43, 71,0.75);
+}
+.text{
+    max-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+}
+p .about-btn{
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+}
+p .about-btn:hover{
+    background:rgb(243, 243, 243);
+}
+/** About section ends */
+
+/** Properties section starts */
+.gallery{
+    display: grid;
+    padding-bottom: 30px;
+    background: rgb(248, 248, 248);
+}
+.gallery a button{
+    border: none;
+    text-decoration: none;
+    background: rgb(189, 189, 248);
+    padding: 10px;
+    border-radius: 3px;
+}
+.gallery a button:hover{
+    background: rgb(229, 229, 240);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.property{
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 20px;
+}
+.second{
+    margin: 0 0 20px 0;
+}
+div .prop-details{
+    display: flex;
+    flex-direction: row;
+}
+.prop-img{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height:300px;
+    margin: 10px 10px 10px 0;
+    background: white;
+    box-shadow: 0 0 1px gray;
+}
+.prop-img img{
+    display: flex;
+    flex:1;
+    flex-wrap: wrap;
+    width: 250px;
+}
+.each-text{
+    width: 178px;
+    height: 160px;
+    padding: 5px 0 0 0;
+    background: white;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    
+}
+.prop-text{
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-top: 2px;
+   
+}
+.status{
+    color: rgb(25, 131, 69);
+    font-weight: bold;
+    font-size: 14px;
+    padding-left: 10px;
+}
+/** Properties section ends */
+
+/* Container section ends here */
+
+/* Footer section starts here*/
+footer{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background: #142b47; 
+    width: 100%;
+    height: 100%;
+}
+footer p{
+    color: white;
+    text-align: center;
+}
+footer a{
+    margin: 20px auto 5px auto;
+    width: 120px;
+}
+footer img,ul{
+    margin: 0 auto;
+}
+
+/* footer section ends here */
+
+/* Media queries */
+
+@media (max-width:1085px){
+    nav > ul{
+        display: none;
+    }
+    .svg{
+        display: block; 
+        margin-top: 25px;      
+    }
+}
+@media (max-width:555px){
+    .logo-image{
+        display: none;
+    }
+    .side-nav img{
+        display: block;
+    }
+    form input[type="text"]{
+        border: none;
+        padding: 8px; 
+        font-size: 15px;
+        width: 60%; 
+    }
+}
+@media (max-width:905px){
+    .heading h1{
+        font-size: 40px;
+    }
+@media (max-width:609px){
+    .heading h1{
+        font-size: 30px;
+    }
+    .heading h4{
+        font-size: 30px;
+    }
+}
+}
+@media (max-width:827px){
+    .about{
+        padding: 40px;
+    }
+    @media (max-width: 501px){
+        .about{
+            padding: 10px;
+        }
+        .text{
+            padding: 0;
+        }
+    }
+}
+@media (max-width:1297px){
+    .property{
+        display:grid;
+        grid-template-columns: repeat(3,2fr);
+        grid-gap: 10px;
+    }
+    @media (max-width: 1017px){
+        .property{
+            display:grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-gap: 5px;
+        }
+    }
+    @media (max-width: 721px){
+        .property{
+            display:grid;
+            grid-template-columns: repeat(1,1fr);
+        }
+    }
+}
+@media (max-width:380px){
+    footer ul{
+        padding: 0;
+    }
+    @media (max-width:340px) {
+        footer ul li{
+            display: block;
+        }
+    }
+}
