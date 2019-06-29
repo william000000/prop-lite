@@ -1,0 +1,240 @@
+body{
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Nav section */
+.navbar{
+    display: flex;
+    justify-content: flex-start;
+    background: #142b47;
+    height: 75px;
+    flex: 1;
+}
+.logo-image{
+    margin: 2px auto 10px 30px;
+    padding-top: 9.5px; 
+    width:30%;
+}
+.img-button{
+    margin-top: 10px;
+    padding-left: 10px;
+}
+.svg{
+    margin-top: 22px;
+    margin-left: 20px;
+    margin-right: auto;
+    padding-right: 20px;
+    display: none;
+}
+.search-form{
+    margin-top: 22px;
+    font-size: 16px;
+}
+nav > ul{
+    margin: 12px 30px 16px 0;
+}
+li{
+    display: inline-block;
+    padding: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 11px;
+}
+li a{
+    text-decoration: none;
+    color: white;
+}
+li a:hover{
+    color: rgb(255, 224, 50);
+}
+nav form input[type="text"],input[type="button"]{
+    border: none;
+    padding: 8px; 
+    font-size: 15px; 
+}
+nav form input[type="button"]{
+    border: none;
+    background:rgb(255, 224, 50);
+    font-weight: bold;
+    color: white;
+    float: left;
+    border-radius: 3px 0 0 3px;
+}
+li input [placeholder]{
+    font-size: 15px;
+}
+.side-nav{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    opacity: 0.9;
+    overflow-x:hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+.side-nav a{
+    margin-top: 20px;
+    padding: 10px 8px 10px 30px;
+    text-decoration: none;
+    font-size: 20px;
+    color:#ccc;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-nav a:hover{
+    color:#fff;
+}
+.side-nav .btn-close{
+    position: absolute;
+    top: 0;
+    right: 22px;
+    font-size: 36px;
+    margin-left: 60px;
+}
+.side-nav img{
+    display: none;
+    margin-left: 20px;
+}
+#main{
+    transition: margin-left 0.5s;
+}
+/* Nav section ends */
+
+/* Main section */
+.container{
+    width: 100%;
+    height: 766px;
+}
+section{
+    width: 350px;
+    margin: auto;
+    background: #142b47;
+    margin: 40px auto;
+    padding: 5px;
+}
+form{
+    padding: 8px;
+    border: 1px dotted white;
+    margin: 10px;
+    color: white;
+    font-size: 17px;
+}
+label{
+    color: white;
+    padding: 8px;
+}
+h3{
+    text-align: center;
+    background: rgb(255, 190, 50);
+    color: white;
+    padding: 5px;
+    margin: 10px 0;
+    border-radius: 5px; 
+}
+textarea{
+    height: 40px;
+}
+input, textarea{
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+}
+input[type=text], input[type=submit], input[type=number],input[type=tel],select,label,textarea{
+    width: 90%;
+    font-size: 14px;
+}
+select{
+    width: 300px;
+    padding: 6px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+}
+input[type=submit]{
+    width: 300px;
+    background: rgb(255, 190, 50);
+    color: white;
+    font-weight: bold;
+}
+input[type=submit]:hover{
+    cursor: pointer;
+    background: #1234ad;
+    color: white;
+    transition: all 0.3s ease-out;
+}
+/* Main section ends */
+/* Footer section */
+footer{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background: #142b47; 
+    width: 100%;
+    height: 100%;
+}
+footer p{
+    color: white;
+    text-align: center;
+}
+footer a{
+    margin: 20px auto 5px auto;
+    width: 120px;
+}
+footer img,ul{
+    margin: 0 auto;
+}
+/* Footer section ends */
+/* Media Queries */
+@media (max-width:642px){
+    nav > ul{
+        display: none;
+    }
+    .svg{
+        display: block; 
+        margin-top: 25px;      
+    }
+}
+@media (max-width:380px){
+    section{
+        width: 300px;
+    }
+    select, input[type=submit]{
+        width: 255px;
+    }
+    @media (max-width:379px){
+        footer ul li{
+            display: block;
+        }
+    }
+}
+@media (max-width:321px) { 
+    section{
+        width: 250px;
+    }   
+    select, input[type=submit]{
+        width: 211px;
+    }
+    nav{
+        width: 320px;
+        overflow-x: hidden;
+    }
+}
+@media (max-width:380px){
+    footer ul{
+        padding: 0;
+    }
+    @media (max-width:339px) {
+        footer ul li{
+            display: block;
+        }
+    }
+}
+
+/* End */
