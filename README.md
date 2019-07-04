@@ -1,3 +1,4 @@
+# **Property Pro-Lite**
 Property Pro-Lite is a web platform where any user can advertise a property and/or buy or rent a property. With Prop-Lite; users are able to search any property of their choice: Apartments, Houses, Offices, etc...
 
 ## It has the following features:
