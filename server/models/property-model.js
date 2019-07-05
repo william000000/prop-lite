@@ -21,5 +21,16 @@ let property = [
         type: "house",
         created_on: new Date()
     },
+    {
+        id:3,
+        owner:"jo@mails.me",
+        status:"available",
+        price: 100,
+        state: "kbh",
+        city:"nyanaxa",
+        address:"rqwrfds",
+        type:"house",
+        created_on:new Date()
+    }
 ]
 export default property;

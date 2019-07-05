@@ -46,7 +46,6 @@ class Property {
         let citys;
         const isPropertyExist = property.filter(p => p.id == req.params.id);
         const isOwner = property.find(k => k.owner == req.body.owner);
-        console.log(isOwner);
         if (isPropertyExist) {
             if (isOwner) {
                 const result = property.map(p => {
@@ -81,9 +80,9 @@ class Property {
         }
     }
     static allProperties(req, res) {
-        const result = property.find(p => p.type === req.query.type);
+        const result = property.filter(p => p.type == req.query.type);
         if (result) {
-            res.status(200).send({ status: "sucsess", data: result });
+            res.status(200).send({ status: "success", data: result });
         }
         else res.status(200).send({ status: "success", data: property });
     }
@@ -102,6 +101,19 @@ class Property {
             res.status(200).send({status:200,data:isProperty});
         }
         else res.status(404).send({status:404, message:"Property not found"});
+    }
+    static delete(req,res){
+        const isProperty = property.find(p=>p.id == req.params.id);
+        if(isProperty){
+            res.status(200).send({
+                status: "success",
+                data: isProperty
+            });
+            const indexes = property.indexOf(isProperty);
+            property.splice(indexes,1);
+        }else{
+            res.status(404).send({status:404, message:"Property not found"});
+        }
     }
 }
 export default Property;
