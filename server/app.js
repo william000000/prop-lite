@@ -1,6 +1,7 @@
 import express from "express";
 import authRouter from "./routes/user-route";
 import propRouter from "./routes/property-route"
+import flagRouter from "./routes/flag-route";
 import bodyParser from "body-parser";
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(bodyParser.json());
 
 app.use("/api/v1/auth/", authRouter);
 app.use("/api/v1/", propRouter);
+app.use("/api/v1/", flagRouter);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

@@ -14,7 +14,7 @@ class Property {
         
         const isUserExist = user.find(p => p.email == owner);
         if (!isUserExist) {
-            return res.status(400).send({ status: 400, message: "User not exist" });
+            return res.status(404).send({ status: 404, message: "User not exist" });
         }
         const newProperty = {
             id: property.length + 1,
