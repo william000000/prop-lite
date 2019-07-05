@@ -80,5 +80,12 @@ class Property {
             }
         }
     }
+    static allProperties(req, res) {
+        const result = property.find(p => p.type === req.query.type);
+        if (result) {
+            res.status(200).send({ status: "sucsess", data: result });
+        }
+        else res.status(200).send({ status: "success", data: property });
+    }
 }
 export default Property;
