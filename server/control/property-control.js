@@ -87,5 +87,11 @@ class Property {
         }
         else res.status(200).send({ status: "success", data: property });
     }
+    static specificProperty(req,res){
+        const isProperty = property.find(p=>p.id == req.params.id);
+        if(isProperty){
+            res.status(200).send({status:200,data:isProperty});
+        }else res.status(404).send({status:404, message:"property not found"});
+    }
 }
 export default Property;
