@@ -44,24 +44,25 @@ class Property {
         let addresses;
         let types;
         let citys;
-        const isPropertyExist = property.filter(p => p.id === req.params.id);
-        const isOwner = property.find(k => k.owner === req.body.email);
+        const isPropertyExist = property.filter(p => p.id == req.params.id);
+        const isOwner = property.find(k => k.owner == req.body.owner);
+        console.log(isOwner);
         if (isPropertyExist) {
             if (isOwner) {
                 const result = property.map(p => {
                     p.status = status,
-                        p.price = price
+                    p.price = price
                     p.state = state,
-                        p.city = city,
-                        p.address = address,
-                        p.type = type
+                    p.city = city,
+                    p.address = address,
+                    p.type = type
 
                     statuss = p.status,
-                        prices = p.price,
-                        states = p.state,
-                        citys = p.city,
-                        addresses = p.address,
-                        types = p.type
+                    prices = p.price,
+                    states = p.state,
+                    citys = p.city,
+                    addresses = p.address,
+                    types = p.type
 
                     return p;
                 });
@@ -77,45 +78,6 @@ class Property {
                     }
                 });
             }
-        }
-    }
-    static markSold(req, res) {
-        const isPropertyExist = property.find(p => p.id == req.params.id);
-        console.log(isPropertyExist);
-        if (isPropertyExist) {
-            const result = property.map(p => {
-                if (p.status == 'available' && p.id == req.params.id) p.status = 'sold';
-                else p.status = 'available';
-
-                return p;
-            });
-            res.status(200).send({ status: "success", data: isPropertyExist });
-        }
-        else {
-            res.status(200).send({ status: "error", message: "Property not found" });
-        }
-    }
-    static allProperties(req, res) {
-        const result = property.find(p => p.type === req.query.type);
-        if (result) {
-            res.status(200).send({ status: "sucsess", data: result });
-        }
-        else res.status(200).send({ status: "success", data: property });
-    }
-    static specificProperty(req, res) {
-        const isProperty = property.find(p => p.id == req.params.id);
-        if (isProperty) res.status(200).send({ status: "success", data: isProperty });
-        else res.status(404).send({ status: "error", message: "Property Not found" });
-    }
-    static delete(req, res) {
-        const isExist = property.find(p => p.id == req.params.id);
-        if (isExist) {
-            const index = property.indexOf(isExist);
-            property.splice(index, 1);
-
-            res.status(200).send({ status: "success", data: isExist });
-        } else {
-            res.status(404).send({ status: "error", message: "Property not found" });
         }
     }
 }
