@@ -5,13 +5,12 @@ import express from "express";
 const app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
 class Property {
     static create(req, res) {
         const { owner, price, city, type, image, state, address } = req.body;
-        
         const isUserExist = user.find(p => p.email == owner);
         if (!isUserExist) {
             return res.status(404).send({ status: 404, message: "User not exist" });
@@ -47,29 +46,28 @@ class Property {
         let citys;
         const isPropertyExist = property.filter(p => p.id == req.params.id);
         const isOwner = property.find(k => k.owner == req.body.owner);
+        console.log(isOwner);
         if (isPropertyExist) {
             if (isOwner) {
                 const result = property.map(p => {
-                    p.status = status,
                     p.price = price
                     p.state = state,
                     p.city = city,
                     p.address = address,
                     p.type = type
-
-                    statuss = p.status,
+                    
                     prices = p.price,
                     states = p.state,
                     citys = p.city,
                     addresses = p.address,
                     types = p.type
-
+                    
                     return p;
-                });
+                });console.log(result);
                 res.status(200).send({
                     status: "success",
                     data: {
-                        statuss,
+                        status:'available',
                         prices,
                         states,
                         citys,
