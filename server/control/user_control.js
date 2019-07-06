@@ -15,6 +15,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 class User {
     static signup(req, res) {
+        if (isEmpty(req.body)) {
+            return res.status(400).send({ status: 'error', message: 'Empty fields' });
+        }
         const oneUser = user.find(u => u.email === req.body.email);
         if (oneUser) {
             return res.status(400).send({
