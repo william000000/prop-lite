@@ -8,6 +8,7 @@ let property = [
         city: "gasabo", // City where property is located
         address: "kinyinya",
         type: "apartment", // 2 bedroom, 3 bedroom etc
+        image: "www.res.send-shit.com",
         created_on: new Date()
     },
     {
@@ -19,6 +20,7 @@ let property = [
         city: "kicukiro",
         address: "gikondo",
         type: "house",
+        image:"www.nowhere.no",
         created_on: new Date()
     },
     {
@@ -30,6 +32,7 @@ let property = [
         city:"nyanaxa",
         address:"rqwrfds",
         type:"house",
+        image: "www.nowhere.no",
         created_on:new Date()
     }
 ]

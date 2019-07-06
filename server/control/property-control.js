@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 class Property {
     static create(req, res) {
-        const { owner, price, city, type, state, address } = req.body;
+        const { owner, price, city, type, image, state, address } = req.body;
         
         const isUserExist = user.find(p => p.email == owner);
         if (!isUserExist) {
@@ -25,6 +25,7 @@ class Property {
             city,
             address,
             type,
+            image,
             created_on: new Date()
         }
 
@@ -83,8 +84,8 @@ class Property {
         const result = property.filter(p => p.type == req.query.type);
         if (result) {
             res.status(200).send({ status: "success", data: result });
-        }
-        else res.status(200).send({ status: "success", data: property });
+        }else {res.status(404).send({status:"error", message:"No property found on thst type"})};
+        
     }
     static specificProperty(req,res){
         const isProperty = property.find(p=>p.id == req.params.id);
