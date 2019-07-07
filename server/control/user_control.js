@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import express from "express";
 import bodyParser from "body-parser";
 import register from "../validators/signupValidation";
-import { loginSchema } from "../validators/signinValidation";
+import { loginSchema } from "../validators/signinValidator";
 
 const app = express();
 
