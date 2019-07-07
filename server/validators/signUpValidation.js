@@ -1,14 +1,20 @@
 import joi from "joi";
 
-const register = joi.object().keys({
-    id: joi.number().required(),
-    first_name: joi.string().alphanum().min(3).required(),
-    last_name: joi.string().alphanum().min(3).required(),
-    email: joi.string().email({minDomainAtoms:2}).required(),
-    password: joi.string().min(6).required(),
-    phoneNumber: joi.string().min(10).required(),
-    address:joi.string().min(3).required(),
-    isAdmin: joi.boolean().required()
-});
+const names = /^[A-Za-z ]{1,}$/;
+const email = /^\S+@[\w\-]+\.[A-Za-z ]{2,}$/;
+const passwd = /^[A-Za-z0-9]{3,}$/;
+const address = /^[A-Za-z0-9]{2,}$/;
 
-export default register;
+export const signupSchema = (user)=>{
+    const signSchema ={
+    id: joi.number().required(),
+    first_name: joi.string().alphanum().min(3).regex(names).required(),
+    last_name: joi.string().alphanum().min(3).regex(names).required(),
+    email: joi.string().email({minDomainAtoms:2}).regex(email).required(),
+    password: joi.string().min(3).regex(passwd).required(),
+    phoneNumber: joi.number().min(10).required(),
+    address:joi.string().min(3).regex(address).required(),
+    isAdmin: joi.boolean().required()
+    }
+    return joi.validate(user,signSchema );
+}
