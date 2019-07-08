@@ -3,6 +3,7 @@ const state = /^[a-zA-Z]{3,}$/;
 const city = /^[a-zA-Z]{1,}$/;
 const price = /^(\d*([.,](?=\d{3}))?\d+)+((?!\2)[.,]\d\d)?$/;
 
+
 class validateProperty {
     static createProperty(req, res, next) {
         try {
