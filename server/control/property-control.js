@@ -46,7 +46,6 @@ class Property {
         let citys;
         const isPropertyExist = property.filter(p => p.id == req.params.id);
         const isOwner = property.find(k => k.owner == req.body.owner);
-        console.log(isOwner);
         if (isPropertyExist) {
             if (isOwner) {
                 const result = property.map(p => {
@@ -63,7 +62,7 @@ class Property {
                     types = p.type
                     
                     return p;
-                });console.log(result);
+                });
                 res.status(200).send({
                     status: "success",
                     data: {
@@ -81,9 +80,9 @@ class Property {
     static allProperties(req, res) {
         const result = property.filter(p => p.type == req.query.type);
         if (result) {
-            res.status(200).send({ status: "success", data: result });
-        }else {res.status(404).send({status:"error", message:"No property found on thst type"})};
-        
+            return res.status(200).send({ status: "success", data: result });
+        }else {res.status(404).send({status:"error", message:"No property found on that type"})};
+        if(req.query === {}) return res.status(200).send({status:"success",data:property});
     }
     static specificProperty(req,res){
         const isProperty = property.find(p=>p.id == req.params.id);
@@ -106,6 +105,7 @@ class Property {
         if(isProperty){
             res.status(200).send({
                 status: "success",
+                message: 'deleted successfully',
                 data: isProperty
             });
             const indexes = property.indexOf(isProperty);
