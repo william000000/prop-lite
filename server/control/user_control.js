@@ -3,8 +3,6 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import express from "express";
 import bodyParser from "body-parser";
-import { signupSchema } from '../validators/signUpValidation'
-import { loginSchema } from "../validators/signinValidator";
 import isEmpty from 'lodash.isempty';
 
 const app = express();
@@ -35,14 +33,9 @@ class User {
             address: req.body.address,
             isAdmin: false
         }
-        const { error } = signupSchema(newUser);
-        if (error) {
-            return res.status(400).send({ status: 400, error: error.details[0].message })
-        }
-        else if(!error) {
             const token = jwt.sign({ email: newUser.email }, process.env.secretKey);
             user.push(newUser);
-            res.status(201).json({
+            res.status(201).send({
                 status: "success",
                 data: {
                     token,
@@ -50,19 +43,11 @@ class User {
                 }
             })
         }
-        else {
-            return res.status(400).send({ status: 400, error: newUser.error.details[0].message });
-        }
-    }
     static signin(req, res) {
         if(isEmpty(req.body)){
             return res.status(400).send({status:'error', message:'Empty fields'});
         }
         const oneUser = user.find(user => user.email === req.body.email && user.password === req.body.password);
-        const { error } = loginSchema(req.body);
-            if (error) {
-            return res.status(400).send({ status: 400, error: error.details[0].message })
-            }
             if (!oneUser) {
                 return res.status(400).send({ status: 400, error: "invalid user account" })
             }
