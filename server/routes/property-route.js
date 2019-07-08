@@ -1,3 +1,4 @@
+
 import express from "express"
 import property from "../control/property-control";
 import cloudinsry from '../config/cloudinaryConfig';
@@ -14,3 +15,4 @@ router.get('/property/:id', property.specificProperty);
 router.delete('/property/:id', property.delete);
 
 export default router;
+

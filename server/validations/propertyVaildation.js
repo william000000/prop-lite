@@ -1,7 +1,8 @@
 const address = /^[a-zA-Z]{3,}$/;
 const state = /^[a-zA-Z]{3,}$/;
 const city = /^[a-zA-Z]{1,}$/;
-const price = /^[+-]?([0-9]*[.])?[0-9]+/;
+const price = /^(\d*([.,](?=\d{3}))?\d+)+((?!\2)[.,]\d\d)?$/;
+
 
 class validateProperty {
     static createProperty(req, res, next) {
@@ -12,7 +13,7 @@ class validateProperty {
             if (!state.test(req.body.state)) throw new Error("insert valid state");
             if (!city.test(req.body.city)) throw new Error("invalid city");
             if (!address.test(req.body.address)) throw new Error("invalid address");
-            if (!(req.body.price) && !price.test(req.body.price)) throw new Error("price needed");
+            if (!price.test(req.body.price)) throw new Error("Invalid price inputted");
             next();
 
         } catch (err) {
