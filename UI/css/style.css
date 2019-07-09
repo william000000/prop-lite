@@ -189,6 +189,9 @@ li input [placeholder]{
     cursor: pointer;
     transition: all 0.5s ease-in-out; 
 }
+.heading a{
+    margin: 0 auto;
+}
 /** Header section ends */
 
 /** About section starts */

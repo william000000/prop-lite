@@ -215,6 +215,9 @@ section .text .status{
 i:hover{
     cursor: pointer;
 }
+.prop-img a:hover{
+    
+}
 /* Report section ends */
 footer{
     display: flex;
