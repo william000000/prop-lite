@@ -145,6 +145,18 @@ section .text .status{
     border: 1px dotted white;   
     padding: 10px;
 }
+.thumbnails{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 20px;
+    justify-items: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.thumbnail{
+    flex:1;
+    justify-content: space-around;
+}
 /* details section ends*/
 
 /* Report section */
@@ -355,6 +367,13 @@ footer img,ul{
 @media (max-width:350px){
     .report{
         left: 20px;
+    }
+}
+@media (max-width:486px){
+    .thumbnail img{
+        width: 70px;
+        height: 70px;
+        overflow-x: hidden;
     }
 }
 
