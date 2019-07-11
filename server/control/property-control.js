@@ -78,7 +78,9 @@ class Property {
         }
     }
     static allProperties(req, res) {
-        const result = property.filter(p => p.type == req.query.type);
+        let result = property
+        if (req.query.type) result = property.filter(p => p.type == req.query.type);
+
         if (result) {
             return res.status(200).send({ status: "success", data: result });
         }else {res.status(404).send({status:"error", message:"No property found on that type"})};
