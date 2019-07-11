@@ -52,7 +52,7 @@ class User {
                 return res.status(400).send({ status: 400, error: "invalid user account" })
             }
             else {
-            const token = jwt.sign({ id: oneUser.id }, process.env.secretkey);
+            const token = jwt.sign({ email: oneUser.email }, process.env.secretkey);
             res.status(200).send({
                 status: 200,
                 token: token,

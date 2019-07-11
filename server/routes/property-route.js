@@ -1,14 +1,14 @@
 
 import express from "express"
 import property from "../control/property-control";
-import cloudinsry from '../config/cloudinaryConfig';
-import validateProperty from '../validations/propertyVaildation'
+import cloudinary from '../config/cloudinaryConfig';
+import validateProperty from '../validations/propertyVaildation';
 const router = express.Router();
 
 const { createProperty } = validateProperty;
 
-router.post('/property', cloudinsry,createProperty, property.create);
-router.patch('/property/:id', createProperty,property.updateProperty);
+router.post('/property', cloudinary,createProperty, property.create);
+router.patch('/property/:id',createProperty,property.updateProperty);
 router.patch('/property/:id/sold', property.markSold);
 router.get('/property', property.allProperties)
 router.get('/property/:id', property.specificProperty);
