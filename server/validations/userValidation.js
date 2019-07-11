@@ -1,4 +1,4 @@
-const names = /^[A-Za-z ]{1,}$/;
+const names = /^\S[A-Za-z]{1,}$/;
 const email = /^\S+@[\w\-]+\.[A-Za-z ]{2,}$/;
 const passwd = /^[A-Za-z0-9]{5,}$/;
 const phoneNumber = /^\d{10}$/

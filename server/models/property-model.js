@@ -1,7 +1,7 @@
 let property = [
     {
         id: 1,
-        owner: "kayinamura@gmail.com", // user id
+        owner: "john.doe@gmail.com",
         status: "available", // sold,available - default is available
         price: 200,
         state: "kgl", // State where property is located
@@ -13,7 +13,7 @@ let property = [
     },
     {
         id: 2,
-        owner: "kayinamura1@gmail.com",
+        owner: "jordan@gmails.com",
         status: "available",
         price: 1000000,
         state: "kgl",
