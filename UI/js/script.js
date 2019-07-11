@@ -21,9 +21,3 @@ function message() {
     confirm('Are you sure you want to delete it?');
 }
 
-const bgmodal = document.querySelector('.bg-modal');
-const images = document.querySelector('.img');
-
-images.addEventListener('mouseover',(e)=>{
-    
-});

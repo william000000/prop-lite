@@ -2,7 +2,7 @@
 import express from "express"
 import property from "../control/property-control";
 import cloudinsry from '../config/cloudinaryConfig';
-import validateProperty from '../validators/propertyValidation'
+import validateProperty from '../validations/propertyVaildation'
 const router = express.Router();
 
 const { createProperty } = validateProperty;

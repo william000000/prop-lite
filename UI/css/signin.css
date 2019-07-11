@@ -2,7 +2,7 @@ body{
     margin: 0;
     font-family: 'Segoe UI';
     font-size: 17px;
-    background: url('../img/properties/black-exterior-freshome3.jpg');
+    background: url('../img/houses-bali.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -159,14 +159,14 @@ ul{
 }
 
 .form{
-    background-color:rgb(255, 255, 255,0.95);
+    background-color: rgb(0, 0, 0,0.90);
     padding: 20px 30px;
     position: relative;
     margin: 70px auto;
 }
 
 .form h2{
-    color: black;
+    color: white;
     font-weight: 700;
     text-align: center;
     padding-top: 20px;
@@ -186,7 +186,7 @@ ul{
     border-bottom: 1px solid rgb(143, 143, 143);
     padding: 13px;
     margin-bottom: 9px;
-    color: black;
+    color: white;
     font-weight: lighter;
     font-size: 13px;
     width: 248px;
@@ -204,8 +204,8 @@ ul{
     margin: 15px auto;
 }
 .button:hover{
-    background:black;
-    color: white;
+    background:white;
+    color: black;
     transition: 0.3s all ease-in-out;
     cursor: pointer;
 }
@@ -219,11 +219,11 @@ a:hover{
 }
 .links{
     font-size: 12px;
-    color: black;
+    color: white;
 
 }
 .links:hover{
-    color: rgb(26, 26, 26);
+    color: rgb(243, 235, 235);
     cursor: pointer;
 }
 .register{
