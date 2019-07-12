@@ -12,19 +12,7 @@ let property = [
         created_on: new Date()
     },
     {
-        id: 2,
-        owner: "jordan@gmails.com",
-        status: "available",
-        price: 1000000,
-        state: "kgl",
-        city: "kicukiro",
-        address: "gikondo",
-        type: "house",
-        image:"www.nowhere.no",
-        created_on: new Date()
-    },
-    {
-        id:3,
+        id:2,
         owner:"jo@mails.me",
         status:"available",
         price: 100,
