@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">76.67% </span>
+        <span class="strong">43.33% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>23/30</span>
+        <span class='fraction'>13/30</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">40% </span>
+        <span class="strong">20% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>4/10</span>
+        <span class='fraction'>2/10</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>2/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">42.86% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>21/28</span>
+        <span class='fraction'>12/28</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -123,17 +123,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,11 +143,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -189,18 +189,18 @@ dotenv.config();
 &nbsp;
 &nbsp;
 class User {
-    static signup(req, res) {
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (isEmpty(req.body)) {
+    static signup(<span class="fstat-no" title="function not covered" >req, r</span>es) {
+<span class="cstat-no" title="statement not covered" >        if (isEmpty(req.body)) {</span>
 <span class="cstat-no" title="statement not covered" >            return r</span>es.status(400).send({ status: 'error', message: 'Empty fields' });
         }
-        const oneUser = user.find(u =&gt; u.email === req.body.email);
-        <span class="missing-if-branch" title="if path not taken" >I</span>if (oneUser) {
+        const oneUser = <span class="cstat-no" title="statement not covered" >user.f</span>ind(<span class="fstat-no" title="function not covered" >u<span class="cstat-no" title="statement not covered" > </span>=&gt; u</span>.email === req.body.email);
+<span class="cstat-no" title="statement not covered" >        if (oneUser) {</span>
 <span class="cstat-no" title="statement not covered" >            return r</span>es.status(400).send({
                 status: "error",
                 message: "User aready exist"
             });
         }
-        const newUser = {
+        const newUser = <span class="cstat-no" title="statement not covered" >{</span>
             id: user.length + 1,
             email: req.body.email,
             first_name: req.body.first_name,
@@ -210,11 +210,11 @@ class User {
             address: req.body.address,
             isAdmin: false
         }
-            const token = jwt.sign({ email: newUser.email }, process.env.secretKey);
-            const hash = bcrypt.hashSync(req.body.password,10);
-            newUser.password = hash;
-            user.push(newUser);
-            res.status(201).send({
+            const token = <span class="cstat-no" title="statement not covered" >jwt.s</span>ign({ email: newUser.email }, process.env.secretKey);
+            const hash = <span class="cstat-no" title="statement not covered" >bcrypt.h</span>ashSync(req.body.password,10);
+<span class="cstat-no" title="statement not covered" >            newUser.</span>password = hash;
+<span class="cstat-no" title="statement not covered" >            user.p</span>ush(newUser);
+<span class="cstat-no" title="statement not covered" >            res.</span>status(201).send({
                 status: "success",
                 data: {
                     token,
@@ -253,7 +253,7 @@ export default User;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jul 12 2019 15:50:02 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jul 12 2019 16:14:16 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>

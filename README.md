@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jo-rdan/prop-lite.svg?branch=develop)](https://travis-ci.org/jo-rdan/prop-lite)
+[![Coverage Status](https://coveralls.io/repos/github/jo-rdan/prop-lite/badge.svg?branch=develop)](https://coveralls.io/github/jo-rdan/prop-lite?branch=develop)
 # **Property Pro-Lite**
 Property Pro-Lite is a web platform where any user can advertise a property and/or buy or rent a property. With Prop-Lite; users are able to search any property of their choice: Apartments, Houses, Offices, etc...
 
