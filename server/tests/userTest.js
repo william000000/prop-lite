@@ -280,21 +280,5 @@ describe("Authentication tests", () => {
                 done();
         });
     });
-    it("User should be able to sign up", (done) => {
-        chai.request(app).post("/api/v1/auth/signup").send({
-            email: "jo@gmail.com",
-            first_name: "John",
-            last_name: "Doe",
-            password: "anger",
-            phoneNumber: "0781268924",
-            address: "kgalit"
-        }).end((err, res) => {
-            res.should.have.status(201);
-            res.body.should.be.an("object");
-            done();
-        })
-    });
-
-
 
 })
