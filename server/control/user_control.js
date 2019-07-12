@@ -1,15 +1,10 @@
 import user from "../models/user";
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
-import express from "express";
-import bodyParser from "body-parser";
 import isEmpty from 'lodash.isempty';
-
-const app = express();
-
+import dotenv from 'dotenv';
+import bcrypt from 'bcrypt';
 dotenv.config();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
 
 class User {
     static signup(req, res) {
@@ -20,7 +15,7 @@ class User {
         if (oneUser) {
             return res.status(400).send({
                 status: "error",
-                message: "User already exist"
+                message: "User aready exist"
             });
         }
         const newUser = {
@@ -34,6 +29,8 @@ class User {
             isAdmin: false
         }
             const token = jwt.sign({ email: newUser.email }, process.env.secretKey);
+            const hash = bcrypt.hashSync(req.body.password,10);
+            newUser.password = hash;
             user.push(newUser);
             res.status(201).send({
                 status: "success",
@@ -47,17 +44,21 @@ class User {
         if(isEmpty(req.body)){
             return res.status(400).send({status:'error', message:'Empty fields'});
         }
-        const oneUser = user.find(user => user.email === req.body.email && user.password === req.body.password);
-            if (!oneUser) {
-                return res.status(400).send({ status: 400, error: "invalid user account" })
+        const oneUser = user.find(user => user.email === req.body.email);
+        const findPassword = bcrypt.compareSync(req.body.password, oneUser.password);
+        if(!findPassword){
+            return res.status(400).send({ status: 400, error: "Wrong password" });
+        }
+            if (oneUser) {
+                const token = jwt.sign({ email: oneUser.email }, process.env.secretkey);
+                res.status(200).send({
+                    status: 200,
+                    token: token,
+                    data: oneUser
+                });
             }
             else {
-            const token = jwt.sign({ email: oneUser.email }, process.env.secretkey);
-            res.status(200).send({
-                status: 200,
-                token: token,
-                data: oneUser
-            });
+                return res.status(400).send({ status: 400, error: "invalid user account" })
         }
     }
 }

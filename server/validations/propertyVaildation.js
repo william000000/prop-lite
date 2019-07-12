@@ -14,7 +14,7 @@ class validateProperty {
             if (!city.test(req.body.city)) throw new Error("invalid city");
             if (!address.test(req.body.address)) throw new Error("invalid address");
             if (!price.test(req.body.price)) throw new Error("Invalid price inputted");
-            next();
+             next();
 
         } catch (err) {
             res.status(400).send({ status: 400, error: err.message })

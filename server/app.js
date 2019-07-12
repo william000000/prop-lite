@@ -15,7 +15,7 @@ app.use("/api/v1/auth/", authRouter);
 app.use("/api/v1/", propRouter);
 app.use("/api/v1/", flagRouter);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 9;
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
 });
