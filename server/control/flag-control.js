@@ -1,11 +1,5 @@
 import property from "../models/property-model";
 import flag from "../models/flag";
-import bodyParser from "body-parser";
-import express from "express";
-const app = express();
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 
 class Flags {
