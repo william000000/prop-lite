@@ -1,7 +1,7 @@
-const address = /^[a-zA-Z]{3,}$/;
-const state = /^[a-zA-Z]{3,}$/;
-const city = /^[a-zA-Z]{1,}$/;
-const price = /^(\d*([.,](?=\d{3}))?\d+)+((?!\2)[.,]\d\d)?$/;
+const address = /^\S[a-zA-Z]{3,}$/;
+const state = /^\S[a-zA-Z]{3,}$/;
+const city = /^\S[a-zA-Z]{3,}$/;
+const price = /^\S(\d*([.,](?=\d{3}))?\d+)+((?!\2)[.,]\d\d)?$/;
 
 
 class validateProperty {
