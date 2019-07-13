@@ -7,8 +7,8 @@ chai.use(chaiHttp);
 describe("before each", () => {
     beforeEach((done) => {
         done();
-    })
-})
+    });
+});
 
 describe ('Property Tests', ()=>{
     
@@ -19,7 +19,6 @@ describe ('Property Tests', ()=>{
             city: "nyanaxa",
             address: "rqwrfds",
             type: "house",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -34,7 +33,6 @@ describe ('Property Tests', ()=>{
             city: "nyanaxa",
             address: "rqwrfds",
             type: "house",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -49,7 +47,6 @@ describe ('Property Tests', ()=>{
             city: "nyanaxa",
             address: "rqwrfds",
             type: "house",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -63,9 +60,7 @@ describe ('Property Tests', ()=>{
             state: "",
             city: "nyanaxa",
             address: "rqwrfds",
-            type: "house",
-            image: "www.nowhere.no"
-        })
+            type: "house",        })
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
@@ -79,7 +74,6 @@ describe ('Property Tests', ()=>{
             city: "nyanaxa",
             address: "rqwrfds",
             type: "house",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -94,7 +88,6 @@ describe ('Property Tests', ()=>{
             city: "nyanaxa",
             address: "rqwrfds",
             type: "house",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -109,7 +102,6 @@ describe ('Property Tests', ()=>{
             city: "",
             address: "rqwrfds",
             type: "house",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -124,7 +116,6 @@ describe ('Property Tests', ()=>{
             city: "   ",
             address: "rqwrfds",
             type: "house",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -139,7 +130,6 @@ describe ('Property Tests', ()=>{
             city: "   ",
             address: "rqwrfds",
             type: "house",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -153,7 +143,6 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "rqwrfds",
             type: "house",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -167,7 +156,6 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "rqwrfds",
             type: "house",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -181,7 +169,6 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "rqwrfds1",
             type: "house",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -195,7 +182,6 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "",
             type: "house",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -209,7 +195,6 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "   ",
             type: "house",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -223,7 +208,6 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "daudbaub",
             type: "   ",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -237,7 +221,6 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "daudbaub",
             type: "diary",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -251,7 +234,6 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "daudbaub",
             type: "diary",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -265,7 +247,6 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "daudbaub",
             type: "diary",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -279,7 +260,6 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "daudbaub",
             type: "diary",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -293,7 +273,6 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "daudbaub",
             type: "diary",
-            image: "www.nowhere.no"
         })
             .end((err, res) => {
                 res.should.has.status(400);
