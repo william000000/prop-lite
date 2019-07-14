@@ -48,7 +48,6 @@ class Property {
 
         try {
             const token = jwt.verify(req.headers.token, process.env.secretKey);
-
             const isOwner = property.find(k => k.owner == token.email);
             const isPropertyExist = property.find(p => p.id == req.params.id);
             console.log(isPropertyExist);

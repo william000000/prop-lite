@@ -44,11 +44,14 @@ class User {
         if(isEmpty(req.body)){
             return res.status(400).send({status:'error', message:'Empty fields'});
         }
-        const oneUser = user.find(user => user.email === req.body.email);
-        const findPassword = bcrypt.compareSync(req.body.password, oneUser.password);
-        if(!findPassword){
-            return res.status(400).send({ status: 400, error: "Wrong password" });
-        }
+    
+        try{
+            const oneUser = user.find(us => us.email === req.body.email);
+            console.log(oneUser.password);
+            const findPassword = bcrypt.compareSync(req.body.password, oneUser.password);
+            if (!findPassword) {
+                return res.status(400).send({ status: 400, error: "Wrong password" });
+            }
             if (oneUser) {
                 const token = jwt.sign({ email: oneUser.email }, process.env.secretkey);
                 res.status(200).send({
@@ -59,9 +62,14 @@ class User {
             }
             else {
                 return res.status(400).send({ status: 400, error: "invalid user account" })
+            }
         }
-    }
-}
+
+        catch(e){
+            res.status(400).send({status: 401, error: "invalid data"})
+        }
+        
+}}
 
 export default User;
 
