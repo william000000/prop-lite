@@ -50,13 +50,11 @@ class Property {
             const token = jwt.verify(req.headers.token, process.env.secretKey);
             const isOwner = property.find(k => k.owner == token.email);
             const isPropertyExist = property.find(p => p.id == req.params.id);
-            console.log(isPropertyExist);
             if (!isPropertyExist) {
                 return res.status(404).send({ status: 404, error: "unknown property" });
             }
 
             if (isOwner.id == req.params.id) {
-                console.log("her w go");
                 property.map(p => {
                     p.price = price
                     p.state = state,
@@ -72,7 +70,6 @@ class Property {
 
                     return p;
                 });
-                console.log("finish");
                 res.status(200).send({
                     status: "success",
                     data: {
