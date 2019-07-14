@@ -7,7 +7,7 @@ chai.use(chaiHttp);
 describe("before each", () => {
     beforeEach((done) => {
         done();
-    });
+    })
 });
 
 describe ('Property Tests', ()=>{
