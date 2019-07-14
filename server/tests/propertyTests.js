@@ -3,6 +3,7 @@ import chaiHttp from 'chai-http';
 import app from '../app';
 
 chai.use(chaiHttp);
+chai.should();
 
 describe("before each", () => {
     beforeEach((done) => {
@@ -19,6 +20,7 @@ describe ('Property Tests', ()=>{
             city: "nyanaxa",
             address: "rqwrfds",
             type: "house",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -33,6 +35,7 @@ describe ('Property Tests', ()=>{
             city: "nyanaxa",
             address: "rqwrfds",
             type: "house",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -47,6 +50,7 @@ describe ('Property Tests', ()=>{
             city: "nyanaxa",
             address: "rqwrfds",
             type: "house",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -60,7 +64,9 @@ describe ('Property Tests', ()=>{
             state: "",
             city: "nyanaxa",
             address: "rqwrfds",
-            type: "house",        })
+            type: "house",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"       
+         })
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
@@ -74,6 +80,7 @@ describe ('Property Tests', ()=>{
             city: "nyanaxa",
             address: "rqwrfds",
             type: "house",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -88,6 +95,7 @@ describe ('Property Tests', ()=>{
             city: "nyanaxa",
             address: "rqwrfds",
             type: "house",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -102,6 +110,7 @@ describe ('Property Tests', ()=>{
             city: "",
             address: "rqwrfds",
             type: "house",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -116,6 +125,7 @@ describe ('Property Tests', ()=>{
             city: "   ",
             address: "rqwrfds",
             type: "house",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -130,6 +140,7 @@ describe ('Property Tests', ()=>{
             city: "   ",
             address: "rqwrfds",
             type: "house",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -143,6 +154,7 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "rqwrfds",
             type: "house",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -156,6 +168,7 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "rqwrfds",
             type: "house",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -169,6 +182,7 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "rqwrfds1",
             type: "house",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -182,6 +196,7 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "",
             type: "house",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -195,6 +210,7 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "   ",
             type: "house",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -208,6 +224,7 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "daudbaub",
             type: "   ",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -221,6 +238,7 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "daudbaub",
             type: "diary",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -234,6 +252,7 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "daudbaub",
             type: "diary",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -247,6 +266,7 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "daudbaub",
             type: "diary",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);
@@ -260,6 +280,7 @@ describe ('Property Tests', ()=>{
             city: "gasab1",
             address: "daudbaub",
             type: "diary",
+            image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png"
         })
             .end((err, res) => {
                 res.should.has.status(400);

@@ -8,6 +8,7 @@ let property = [
         city: "gasabo", // City where property is located
         address: "kinyinya",
         type: "apartment", // 2 bedroom, 3 bedroom etc
+        image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png",
         created_on: new Date()
     },
     {
@@ -19,6 +20,7 @@ let property = [
         city:"nyanaxa",
         address:"rqwrfds",
         type:"house",
+        image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png",
         created_on:new Date()
     }
 ]

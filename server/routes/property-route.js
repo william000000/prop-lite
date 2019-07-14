@@ -3,12 +3,14 @@ import express from "express"
 import property from "../control/property-control";
 import validateProperty from '../validations/propertyVaildation';
 import flag from '../control/flag-control';
-import validFlag from '../validations/flagValidations'
+import validFlag from '../validations/flagValidations';
+import cloudinary from '../helper/cloudinary';
+
 const router = express.Router();
 
 const { createProperty } = validateProperty;
 
-router.post('/property',createProperty, property.create);
+router.post('/property',cloudinary,createProperty, property.create);
 router.post('/property/report/:id', validFlag.validateflags,flag.report);
 router.patch('/property/:id',createProperty,property.updateProperty);
 router.patch('/property/:id/sold', property.markSold);
