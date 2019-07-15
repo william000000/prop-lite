@@ -35,7 +35,7 @@ const createTables = async () => {
     const flagTable = `
     CREATE TABLE IF NOT EXISTS flags(
         id SERIAL PRIMARY KEY UNIQUE,
-        property_id INTEGER NOT NULL REFERENCES properties(id) ON DELETE CASCADE,
+        properties_id INTEGER NOT NULL REFERENCES properties(id) ON DELETE CASCADE,
         email TEXT NOT NULL REFERENCES users(email) ON DELETE CASCADE,
         createdOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         reason TEXT,
