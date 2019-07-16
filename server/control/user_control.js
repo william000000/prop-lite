@@ -43,30 +43,37 @@ class User {
             return res.status(201).send({ status: 'success', token, data:{first_name,last_name} });
         }
     }
-    static signin(req, res) {
+    static async signin(req, res) {
         if (isEmpty(req.body)) {
             return res.status(400).send({ status: 'error', message: 'Empty fields' });
         }
 
 
         try {
-            const oneUser = user.find(us => us.email === req.body.email);
-            const findPassword = bcrypt.compareSync(req.body.password, oneUser.password);
-            if (!findPassword) {
-                return res.status(400).send({ status: 400, error: "Wrong password" });
-            }
-            if (oneUser) {
-                const token = jwt.sign({ email: oneUser.email }, process.env.secretkey);
-                
+           const { email, password } = req.body;
+           const aUser = await executeQuery(users.isExist, [email]);
+           const validPass = bcrypt.compareSync(password,aUser[0].password); 
+           if (aUser) {
+               if(validPass){
+                const token = await executeQuery(users.retrieveToken, [email]);
+                let result = await executeQuery(users.login, [email]);
+                result[0].token = token[0].token;
                 res.status(200).send({
-                    status: 200,
-                    token: token,
-                    data: oneUser
+                    status:200, 
+                    token:result[0].token, 
+                    data:{
+                        email: result[0].email,
+                        first_name: result[0].first_name,
+                        last_name: result[0].last_name,
+                        phoneNumber: result[0].phoneNumber,
+                        address: result[0].address
+                    }
                 });
-            }
-            else {
-                return res.status(400).send({ status: 400, error: "invalid user account" })
-            }
+               }else{
+                   res.status(401).send({status:'error', message:'Invalid Password'});
+               }
+           }
+           else res.status(401).send({status:401, error:'Invalid Email'});
         }
 
         catch (e) {

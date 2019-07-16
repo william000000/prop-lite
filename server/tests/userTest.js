@@ -306,4 +306,18 @@ describe("Authentication tests", () => {
         });
     });
 
+    it('should not be able to signup when empty fields', (done)=>{
+        chai.request(app).post('/api/v1/auth/signup').send({
+            email: "",
+            first_name: "",
+            last_name: "",
+            password: "",
+            phoneNumber: "",
+            address: ""
+        }).end((err,res)=>{
+            res.should.has.status(400);
+            done();
+        })
+    });
+
 })
