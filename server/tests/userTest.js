@@ -42,7 +42,7 @@ describe("Authentication tests", () => {
             password: "sfgfgsfsf"
         })
             .end((err, res) => {
-                res.should.has.status(400);
+                res.should.has.status(401);
                 done();
             });
 
@@ -53,7 +53,7 @@ describe("Authentication tests", () => {
             password: ""
         })
             .end((err, res) => {
-                res.should.has.status(400);
+                res.should.has.status(401);
                 done();
             });
 
@@ -64,7 +64,7 @@ describe("Authentication tests", () => {
             password: "a"
         })
             .end((err, res) => {
-                res.should.has.status(400);
+                res.should.has.status(401);
                 done();
         });
     });
