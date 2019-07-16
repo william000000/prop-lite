@@ -16,11 +16,12 @@ const createTables = async () => {
         first_name TEXT NOT NULL,
         last_name TEXT NOT NULL,
         password TEXT NOT NULL,
+        phoneNumber TEXT NOT NULL,
         address TEXT,
         createdOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         isAdmin boolean DEFAULT false
-    )`;
-    const propertyTable = `
+    )`
+    const propertiesTable = `
     CREATE TABLE IF NOT EXISTS properties(
         id SERIAL PRIMARY KEY UNIQUE,
         owner TEXT NOT NULL REFERENCES users(email) ON DELETE CASCADE,
@@ -29,10 +30,10 @@ const createTables = async () => {
         state TEXT NOT NULL,
         city TEXT NOT NULL,
         address TEXT NOT NULL,
-        image TEXT
-        createdOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    )`;
-    const flagTable = `
+        image TEXT,
+        createdOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )`
+    const flagsTable = `
     CREATE TABLE IF NOT EXISTS flags(
         id SERIAL PRIMARY KEY UNIQUE,
         properties_id INTEGER NOT NULL REFERENCES properties(id) ON DELETE CASCADE,
@@ -40,14 +41,18 @@ const createTables = async () => {
         createdOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         reason TEXT,
         description VARCHAR(50)
-    )`;
+    )`
     const tokenTable = `
     CREATE TABLE IF NOT EXISTS tokens(
         id SERIAL PRIMARY KEY UNIQUE,
         token TEXT NOT NULL UNIQUE,
-        email TEXT NOT NULL UNIQUE REFERENCES users(email) ON DELETE CASCADE,
-        createdOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )`;
+        email TEXT NOT NULL UNIQUE REFERENCES users(email) ON DELETE CASCADE   
+    )
+    `
 
+    await pool.query(userTable);
+    await pool.query(propertiesTable);
+    await pool.query(flagsTable);
+    await pool.query(tokenTable);
 };
 createTables();
