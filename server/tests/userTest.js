@@ -2,8 +2,10 @@ import chai from "chai";
 import chaiHttp from "chai-http";
 import app from "../app";
 
+
 chai.use(chaiHttp);
 chai.should();
+
 
 describe("before each", () => {
     beforeEach((done) => {
@@ -13,16 +15,16 @@ describe("before each", () => {
 
 
 describe("Authentication tests", () => {
-
     it("Should be able to login", (done) => {
         chai.request(app).post("/api/v1/auth/signin").send({
-            email: "john.doe@gmail",
-            password: "anger"
+            email: "john.doe@gmail.com",
+            password: "$2b$10$Ckxwq0bGQS2ToJOV0hmqNOHaf.OCBYItXKqVPOT2NvnSkvv8AnYg6"
         })
             .end((err, res) => {
-                res.should.has.status(400);
+                res.should.has.status(200);
                 done();
             });
+        setTimeout(done, 2500);
 
     });
     it("Should not be able to login when email is invalid", (done) => {
@@ -31,7 +33,7 @@ describe("Authentication tests", () => {
             password: "anger"
         })
             .end((err, res) => {
-                res.should.has.status(400);
+                res.should.has.status(401);
                 done();
             });
 
@@ -47,7 +49,7 @@ describe("Authentication tests", () => {
             });
 
     });
-    it("Should not be able to login when password is empty", (done) => {
+    it("Should not be able to login when password is empty",(done) => {
         chai.request(app).post("/api/v1/auth/signin").send({
             email: "john.doe@gmail.com",
             password: ""
@@ -56,8 +58,12 @@ describe("Authentication tests", () => {
                 res.should.has.status(401);
                 done();
             });
+            setTimeout(done,2500);
 
     });
+
+
+
     it("Should not be able to login when password length is < 5", (done) => {
         chai.request(app).post("/api/v1/auth/signin").send({
             email: "john.doe@gmail.com",
@@ -67,6 +73,7 @@ describe("Authentication tests", () => {
                 res.should.has.status(401);
                 done();
         });
+        setTimeout(done, 2500);
     });
     it("Should not be able to signup when email is empty", (done) => {
         chai.request(app).post("/api/v1/auth/signup").send({
@@ -74,7 +81,7 @@ describe("Authentication tests", () => {
             password: "anger"
         })
             .end((err, res) => {
-                res.should.has.status(401);
+                res.should.has.status(400);
                 done();
         });
     });
