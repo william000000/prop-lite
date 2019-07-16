@@ -42,17 +42,9 @@ const createTables = async () => {
         reason TEXT,
         description VARCHAR(50)
     )`
-    const tokenTable = `
-    CREATE TABLE IF NOT EXISTS tokens(
-        id SERIAL PRIMARY KEY UNIQUE,
-        token TEXT NOT NULL UNIQUE,
-        email TEXT NOT NULL UNIQUE REFERENCES users(email) ON DELETE CASCADE   
-    )
-    `
 
     await pool.query(userTable);
     await pool.query(propertiesTable);
     await pool.query(flagsTable);
-    await pool.query(tokenTable);
 };
 createTables();

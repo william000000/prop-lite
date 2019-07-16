@@ -38,46 +38,44 @@ class User {
         ];
         const createUser = await executeQuery(users.create, newUser);
         const token = jwt.sign({ email: createUser[0].email }, process.env.secretkey);
-        const keepToken = await executeQuery(users.generateToken,[token , email]);
         if (createUser) {
-            return res.status(201).send({ status: 'success', token, data:{first_name,last_name} });
+            return res.status(201).send({
+                 status: 'success',
+                  token, 
+                  data:{email,first_name,last_name, phoneNumber,address} 
+                });
         }
     }
     static async signin(req, res) {
         if (isEmpty(req.body)) {
             return res.status(400).send({ status: 'error', message: 'Empty fields' });
         }
-
-
         try {
            const { email, password } = req.body;
            const aUser = await executeQuery(users.isExist, [email]);
            const validPass = bcrypt.compareSync(password,aUser[0].password); 
-           if (aUser) {
+           console.log()
+           if (aUser[0].email) {
                if(validPass){
-                const token = await executeQuery(users.retrieveToken, [email]);
-                let result = await executeQuery(users.login, [email]);
-                result[0].token = token[0].token;
-                res.status(200).send({
-                    status:200, 
-                    token:result[0].token, 
-                    data:{
-                        email: result[0].email,
-                        first_name: result[0].first_name,
-                        last_name: result[0].last_name,
-                        phoneNumber: result[0].phoneNumber,
-                        address: result[0].address
-                    }
-                });
-               }else{
-                   res.status(401).send({status:'error', message:'Invalid Password'});
-               }
+                    const token  = jwt.sign({email:aUser[0].email}, process.env.secretkey);
+                    const results = await executeQuery(users.login, [email]);
+                    res.status(200).send({
+                        status:200, 
+                        token, 
+                        data: {
+                            email:results[0].email,
+                            firstname:results[0].first_name,
+                            lastname:results[0].last_name,
+                            phoneNumber:results[0].phonenumber,
+                            address:results[0].address
+                        }
+                    });
+                }
            }
            else res.status(401).send({status:401, error:'Invalid Email'});
         }
-
         catch (e) {
-            res.status(400).send({ status: 401, error: "invalid data" })
+            res.status(401).send({status:401, error:'Invalid data'});
         }
 
     }
