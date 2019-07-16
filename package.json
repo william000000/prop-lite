@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "npm run dropTable && npm run db && nyc --export=text mocha --require @babel/register server/tests/*.js --exit",
+    "test": "nyc --reporter=html --reporter=text mocha --timeout 10000 --require @babel/register --require @babel/polyfill server/tests/*.js  --exit",
     "start": "nodemon --exec babel-node ./server/app.js",
     "db": "babel-node server/database/table.js",
     "coverage":"nyc report --reporter=text-lcov | coveralls"
