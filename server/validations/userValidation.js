@@ -15,7 +15,7 @@ class UserValidation{
             if (!address.test(req.body.address)) throw new Error('address is invalid');
             next();
         }catch(error){
-            res.status(400).send({
+            res.status(401).send({
                 status:"error",
                 message: error.message
             })

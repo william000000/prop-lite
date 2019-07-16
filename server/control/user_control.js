@@ -20,7 +20,7 @@ class User {
     */
     static async signup(req, res) {
         if (isEmpty(req.body)) {
-            return res.status(400).send({ status: 'error', message: 'Empty fields' });
+            return res.status(401).send({ status: 'error', message: 'Empty fields' });
         }
         const { email, first_name, last_name, password, phoneNumber, address } = req.body;
         const exist = await executeQuery(users.isExist, [email]);

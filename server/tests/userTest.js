@@ -74,7 +74,7 @@ describe("Authentication tests", () => {
             password: "anger"
         })
             .end((err, res) => {
-                res.should.has.status(400);
+                res.should.has.status(401);
                 done();
         });
     });
