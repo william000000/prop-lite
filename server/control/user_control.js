@@ -48,7 +48,7 @@ class User {
     }
     static async signin(req, res) {
         if (isEmpty(req.body)) {
-            return res.status(400).send({ status: 'error', message: 'Empty fields' });
+            return res.status(401).send({ status: 'error', message: 'Empty fields' });
         }
         try {
            const { email, password } = req.body;
