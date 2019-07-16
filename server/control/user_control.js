@@ -3,51 +3,53 @@ import jwt from "jsonwebtoken";
 import isEmpty from 'lodash.isempty';
 import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
+import users from '../database/MyQueries';
+import execute from '../database/execute';
+import executeQuery from "../database/execute";
+import { Pool } from 'pg';
+
 dotenv.config();
 
 
 class User {
-    static signup(req, res) {
+    /**
+    *
+    * @param {object} req
+    * @param {object} res
+    * @returns signup when user not exist
+    */
+    static async signup(req, res) {
         if (isEmpty(req.body)) {
             return res.status(400).send({ status: 'error', message: 'Empty fields' });
         }
-        
-        const oneUser = user.find(u => u.email === req.body.email);
-        if (oneUser) {
-            return res.status(400).send({
-                status: "error",
-                message: "User aready exist"
-            });
+        const { email, first_name, last_name, password, phoneNumber, address } = req.body;
+        const exist = await executeQuery(users.isExist, [email]);
+        if (exist[0]) {
+            return res.status(401).send({ status: 'error', message: 'User already exist!' });
         }
-        const newUser = {
-            id: user.length + 1,
-            email: req.body.email,
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            password: req.body.password,
-            phoneNumber: req.body.phoneNumber,
-            address: req.body.address,
-            isAdmin: false
+        const hashPass = bcrypt.hashSync(password, 10);
+        const newUser = [
+            email,
+            first_name,
+            last_name,
+            hashPass,
+            phoneNumber,
+            address
+        ];
+        const createUser = await executeQuery(users.create, newUser);
+        const token = jwt.sign({ email: createUser[0].email }, process.env.secretkey);
+        const keepToken = await executeQuery(users.generateToken,[token , email]);
+        if (createUser) {
+            return res.status(201).send({ status: 'success', token, data:{first_name,last_name} });
         }
-            const token = jwt.sign({ email: newUser.email }, process.env.secretKey);
-            const hash = bcrypt.hashSync(req.body.password,10);
-            newUser.password = hash;
-            user.push(newUser);
-            res.status(201).send({
-                status: "success",
-                data: {
-                    token,
-                    newUser
-                }
-            })
-        }
+    }
     static signin(req, res) {
-        console.log("req.body.email");
-        if(isEmpty(req.body)){
-            return res.status(400).send({status:'error', message:'Empty fields'});
+        if (isEmpty(req.body)) {
+            return res.status(400).send({ status: 'error', message: 'Empty fields' });
         }
-       
-        try{
+
+
+        try {
             const oneUser = user.find(us => us.email === req.body.email);
             const findPassword = bcrypt.compareSync(req.body.password, oneUser.password);
             if (!findPassword) {
@@ -67,11 +69,12 @@ class User {
             }
         }
 
-        catch(e){
-            res.status(400).send({status: 401, error: "invalid data"})
+        catch (e) {
+            res.status(400).send({ status: 401, error: "invalid data" })
         }
-        
-}}
+
+    }
+}
 
 export default User;
 
