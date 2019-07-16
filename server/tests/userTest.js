@@ -14,6 +14,17 @@ describe("before each", () => {
 
 describe("Authentication tests", () => {
 
+    it("Should be able to login", (done) => {
+        chai.request(app).post("/api/v1/auth/signin").send({
+            email: "john.doe@gmail",
+            password: "anger"
+        })
+            .end((err, res) => {
+                res.should.has.status(400);
+                done();
+            });
+
+    });
     it("Should not be able to login when email is invalid", (done) => {
         chai.request(app).post("/api/v1/auth/signin").send({
             email: "john.doegmail",
@@ -260,6 +271,20 @@ describe("Authentication tests", () => {
             password: "anger",
             phoneNumber: "0781268924",
             address: "",
+        })
+            .end((err, res) => {
+                res.should.has.status(400);
+                done();
+        });
+    });
+    it("Should not be able to signup when address has whitespaces", (done) => {
+        chai.request(app).post("/api/v1/auth/signup").send({
+            email: "john.doe@gmail.com",
+            first_name: "John",
+            last_name: "Doe",
+            password: "anger",
+            phoneNumber: "0781268924",
+            address: "   "
         })
             .end((err, res) => {
                 res.should.has.status(400);

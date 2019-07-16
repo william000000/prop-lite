@@ -51,13 +51,13 @@ class User {
 
         try {
             const oneUser = user.find(us => us.email === req.body.email);
-            console.log(oneUser.password);
             const findPassword = bcrypt.compareSync(req.body.password, oneUser.password);
             if (!findPassword) {
                 return res.status(400).send({ status: 400, error: "Wrong password" });
             }
             if (oneUser) {
                 const token = jwt.sign({ email: oneUser.email }, process.env.secretkey);
+                
                 res.status(200).send({
                     status: 200,
                     token: token,
