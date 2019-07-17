@@ -15,12 +15,11 @@ const dropTable = [
 ];
 
 const dropTables = async () => {
-    for (const data of dropTable) {
-        await pool.query(data);
-    }
+    
+        for (const data of dropTable) {
+            await pool.query(data);
+        }  
 };
-
-
 
 dropTables();
 
