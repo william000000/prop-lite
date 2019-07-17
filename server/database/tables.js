@@ -27,7 +27,7 @@ const createTables = async () => {
         id SERIAL PRIMARY KEY UNIQUE,
         owner TEXT NOT NULL REFERENCES users(email) ON DELETE CASCADE,
         status TEXT NOT NULL DEFAULT 'available',
-        price INTEGER NOT NULL,
+        price NUMERIC NOT NULL,
         state TEXT NOT NULL,
         city TEXT NOT NULL,
         address TEXT NOT NULL,

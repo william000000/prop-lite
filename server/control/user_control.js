@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 import isEmpty from 'lodash.isempty';
 import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
-import users from '../database/MyQueries';
+import queries from '../database/MyQueries';
 import execute from '../database/execute';
 import executeQuery from "../database/execute";
 import { Pool } from 'pg';
@@ -23,7 +23,7 @@ class User {
             return res.status(401).send({ status: 'error', message: 'Empty fields' });
         }
         const { email, first_name, last_name, password, phoneNumber, address } = req.body;
-        const exist = await executeQuery(users.isExist, [email]);
+        const exist = await executeQuery(queries[0].isExist, [email]);
         if (exist[0]) {
             return res.status(401).send({ status: 'error', message: 'User already exist!' });
         }
@@ -36,11 +36,11 @@ class User {
             phoneNumber,
             address
         ];
-        const createUser = await executeQuery(users.create, newUser);
+        const createUser = await executeQuery(queries[0].create, newUser);
         const token = jwt.sign({ email: createUser[0].email }, process.env.secretkey);
         if (createUser) {
             return res.status(201).send({
-                 status: 'success',
+                 status: 201,
                   token, 
                   data:{email,first_name,last_name, phoneNumber,address} 
                 });
@@ -52,13 +52,13 @@ class User {
         }
         try {
            const { email, password } = req.body;
-           const aUser = await executeQuery(users.isExist, [email]);
+           const aUser = await executeQuery(queries[0].isExist, [email]);
            const validPass = bcrypt.compareSync(password,aUser[0].password); 
            console.log()
            if (aUser[0].email) {
                if(validPass){
                     const token  = jwt.sign({email:aUser[0].email}, process.env.secretkey);
-                    const results = await executeQuery(users.login, [email]);
+                    const results = await executeQuery(queries[0].login, [email]);
                     res.status(200).send({
                         status:200, 
                         token, 
@@ -70,7 +70,7 @@ class User {
                             address:results[0].address
                         }
                     });
-                }
+                }else return res.status(401).send({status:401,error:'Wrong Password'});
            }
            else res.status(401).send({status:401, error:'Invalid Email'});
         }
