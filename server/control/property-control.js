@@ -1,38 +1,30 @@
 import property from "../models/property-model";
 import user from "../models/user";
 import jwt from "jsonwebtoken";
-
+import queries from '../database/MyQueries';
+import executeQuery from '../database/execute';
+import tokens from '../helper/authentication';
 
 class Property {
-    static create(req, res) {
+    static async create(req, res) {
         const { price, city, type, image, state, address } = req.body;
-        try {
-            const token = jwt.verify(req.headers.token, process.env.secretKey);
-            const isUserExist = user.find(p => p.email == token.email);
-            console.log(isUserExist);
-            if (!isUserExist) {
-                return res.status(404).send({ status: 404, message: "User not exist" });
-            }
-            const newProperty = {
-                id: property.length + 1,
-                status: "available",
+        const userEmail = req.payload.email 
+            const newProperty = [
+                userEmail,
                 price,
                 state,
                 city,
                 address,
                 type,
                 image,
-                created_on: new Date()
-            }
+            ]
 
-            if (newProperty)
-                property.push(newProperty);
+            if (newProperty){
+            const createProperty = await executeQuery(queries[1].create, newProperty);
             res.status(201).send({
-                status: "success",
-                data: newProperty
+                status: 201,
+                data: createProperty
             });
-        } catch (e) {
-            return res.status(400).send({ error: "invalid token" });
         }
 
     }

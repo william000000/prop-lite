@@ -29,6 +29,7 @@ class UserValidation{
         }catch(error){
             res.status(401).send({status:"error", message:error.message});
         }
+        
 
     }
 }

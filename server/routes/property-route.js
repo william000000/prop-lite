@@ -5,12 +5,14 @@ import validateProperty from '../validations/propertyVaildation';
 import flag from '../control/flag-control';
 import validFlag from '../validations/flagValidations';
 import cloudinary from '../helper/cloudinary';
+import tokens from '../helper/authentication';
 
 const router = express.Router();
 
 const { createProperty } = validateProperty;
+const { authenticate } = tokens;
 
-router.post('/property',cloudinary,createProperty, property.create);
+router.post('/property',cloudinary,createProperty,authenticate, property.create);
 router.post('/property/report/:id', validFlag.validateflags,flag.report);
 router.patch('/property/:id',createProperty,property.updateProperty);
 router.patch('/property/:id/sold', property.markSold);
