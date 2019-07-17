@@ -27,7 +27,7 @@ class UserValidation{
             if (!email.test(req.body.email)) throw new Error("email must be valid");
             next();
         }catch(error){
-            res.status(400).send({status:"error", message:error.message});
+            res.status(401).send({status:"error", message:error.message});
         }
 
     }

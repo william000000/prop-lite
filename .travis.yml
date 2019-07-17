@@ -4,7 +4,10 @@ node_js:
 branches:
   only:
     - develop
-
+services:
+  - postgresql
+before_script :
+ - psql -c 'CREATE DATABASE db_test;' -U postgres
 script:
   - npm run test
 after_success:

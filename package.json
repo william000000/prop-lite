@@ -4,9 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "test": "npm run dropTable && npm run db && nyc --reporter=html --reporter=text mocha --timeout 10000 --require @babel/register --require @babel/polyfill server/tests/*.js  --exit",
     "start": "nodemon --exec babel-node ./server/app.js",
-    "db": "babel-node server/database/table.js",
-    "test": "nyc --reporter=html --reporter=text mocha --timeout 10000 --require @babel/register --require @babel/polyfill server/tests/*.js  --exit",
+    "dropTable": "babel-node server/database/db_test_data.js",
+    "db": "babel-node server/database/tables.js",
     "coverage":"nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {

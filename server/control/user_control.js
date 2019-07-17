@@ -20,7 +20,7 @@ class User {
     */
     static async signup(req, res) {
         if (isEmpty(req.body)) {
-            return res.status(400).send({ status: 'error', message: 'Empty fields' });
+            return res.status(401).send({ status: 'error', message: 'Empty fields' });
         }
         const { email, first_name, last_name, password, phoneNumber, address } = req.body;
         const exist = await executeQuery(users.isExist, [email]);
@@ -38,39 +38,44 @@ class User {
         ];
         const createUser = await executeQuery(users.create, newUser);
         const token = jwt.sign({ email: createUser[0].email }, process.env.secretkey);
-        const keepToken = await executeQuery(users.generateToken,[token , email]);
         if (createUser) {
-            return res.status(201).send({ status: 'success', token, data:{first_name,last_name} });
+            return res.status(201).send({
+                 status: 'success',
+                  token, 
+                  data:{email,first_name,last_name, phoneNumber,address} 
+                });
         }
     }
-    static signin(req, res) {
+    static async signin(req, res) {
         if (isEmpty(req.body)) {
-            return res.status(400).send({ status: 'error', message: 'Empty fields' });
+            return res.status(401).send({ status: 'error', message: 'Empty fields' });
         }
-
-
         try {
-            const oneUser = user.find(us => us.email === req.body.email);
-            const findPassword = bcrypt.compareSync(req.body.password, oneUser.password);
-            if (!findPassword) {
-                return res.status(400).send({ status: 400, error: "Wrong password" });
-            }
-            if (oneUser) {
-                const token = jwt.sign({ email: oneUser.email }, process.env.secretkey);
-                
-                res.status(200).send({
-                    status: 200,
-                    token: token,
-                    data: oneUser
-                });
-            }
-            else {
-                return res.status(400).send({ status: 400, error: "invalid user account" })
-            }
+           const { email, password } = req.body;
+           const aUser = await executeQuery(users.isExist, [email]);
+           const validPass = bcrypt.compareSync(password,aUser[0].password); 
+           console.log()
+           if (aUser[0].email) {
+               if(validPass){
+                    const token  = jwt.sign({email:aUser[0].email}, process.env.secretkey);
+                    const results = await executeQuery(users.login, [email]);
+                    res.status(200).send({
+                        status:200, 
+                        token, 
+                        data: {
+                            email:results[0].email,
+                            firstname:results[0].first_name,
+                            lastname:results[0].last_name,
+                            phoneNumber:results[0].phonenumber,
+                            address:results[0].address
+                        }
+                    });
+                }
+           }
+           else res.status(401).send({status:401, error:'Invalid Email'});
         }
-
         catch (e) {
-            res.status(400).send({ status: 401, error: "invalid data" })
+            res.status(401).send({status:401, error:'Invalid data'});
         }
 
     }

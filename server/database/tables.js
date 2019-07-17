@@ -5,6 +5,7 @@ dotenv.config();
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
+
 });
 
 
@@ -31,6 +32,7 @@ const createTables = async () => {
         city TEXT NOT NULL,
         address TEXT NOT NULL,
         image TEXT,
+        type TEXT NOT NULL,
         createdOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )`
     const flagsTable = `
@@ -42,17 +44,25 @@ const createTables = async () => {
         reason TEXT,
         description VARCHAR(50)
     )`
-    const tokenTable = `
-    CREATE TABLE IF NOT EXISTS tokens(
-        id SERIAL PRIMARY KEY UNIQUE,
-        token TEXT NOT NULL UNIQUE,
-        email TEXT NOT NULL UNIQUE REFERENCES users(email) ON DELETE CASCADE   
-    )
-    `
+
+    const dummyData = [
+    `INSERT INTO users (email,first_name,last_name,password, phoneNumber, address) VALUES('john.doe@gmail.com','john','doe','$2b$10$Ckxwq0bGQS2ToJOV0hmqNOHaf.OCBYItXKqVPOT2NvnSkvv8AnYg6',1234567890,'kigali')`,
+    `INSERT INTO users (email,first_name,last_name,password, phoneNumber, address) VALUES('jokayinamura@gmail.com','jordan','kayinamura','$2b$10$Ckxwq0bGQS2ToJOV0hmqNOHaf.OCBYItXKqVPOT2NvnSkvv8AnYg6',0781289231,'kgl')`,
+    
+    `INSERT INTO properties (owner,price, state,city,address,type,image) VALUES('john.doe@gmail.com',200,'kgl','gasabo','kinyinya','apartment','https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png')` ,   
+    `INSERT INTO properties (owner, price, state,city,address,type,image) VALUES('jokayinamura@gmail.com',100,'kbh','nyanaxa','rqwrfds','house','https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png')`,            
+    
+    `INSERT INTO flags (properties_id, email,reason, description)VALUES(2,'john.doe@gmail.com','Fraud','Stolen property')`                
+    ];
 
     await pool.query(userTable);
     await pool.query(propertiesTable);
     await pool.query(flagsTable);
-    await pool.query(tokenTable);
+
+    for (const data of dummyData) {
+        await pool.query(data);
+    }
+
+    pool.end();
 };
 createTables();
