@@ -8,7 +8,7 @@ import cloudinary from '../helper/cloudinary';
 import tokens from '../helper/authentication';
 const router = express.Router();
 
-const { createProperty } = validateProperty;
+const { createProperty} = validateProperty;
 const { authenticate } = tokens;
 
 router.post('/property',cloudinary,createProperty,authenticate, property.create);

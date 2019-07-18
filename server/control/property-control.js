@@ -4,6 +4,8 @@ import jwt from "jsonwebtoken";
 import queries from '../database/MyQueries';
 import executeQuery from '../database/execute';
 import tokens from '../helper/authentication';
+import { pool } from 'pg';
+
 
 class Property {
     static async create(req, res) {
@@ -44,16 +46,21 @@ class Property {
         }catch(err){
             res.status(400).send({status:400,error:err.message});
         }
-
     }
-    static allProperties(req, res) {
-        let result = property
-        if (req.query.type) result = property.filter(p => p.type == req.query.type);
-
-        if (result.length>0) {
-            return res.status(200).send({ status: "success", data: result });
-        } else { res.status(404).send({ status: "error", message: "No property found on that type" }) };
-        if (req.query === {}) return res.status(200).send({ status: "success", data: property });
+    static async allProperties(req, res) {
+        try{
+            const type = req.query.type;
+            if(type){
+                if (type !== 'apartment' && type !== 'house' && type !== 'office' && type !== 'land') throw new Error("We have no property of that type, Please try either apartment, house, land or office");
+                const allTypes = await executeQuery(queries[1].getType, [req.query.type]);
+                return res.status(200).send({status:200, data:allTypes});
+        }
+            const getallProperties = await executeQuery(queries[1].getAll);
+            res.status(200).send({status:200, data:getallProperties});
+        }catch(e){
+            res.status(400).send({status:400, error:e.message})
+        }
+        
     }
     static specificProperty(req, res) {
         const isProperty = property.find(p => p.id == req.params.id);
