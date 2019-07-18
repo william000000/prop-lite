@@ -20,7 +20,6 @@ class UserValidation{
                 message: error.message
             })
         }
-        
     }
     static validateLogin(req,res,next){
         try{

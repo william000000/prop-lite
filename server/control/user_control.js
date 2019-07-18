@@ -12,12 +12,7 @@ dotenv.config();
 
 
 class User {
-    /**
-    *
-    * @param {object} req
-    * @param {object} res
-    * @returns signup when user not exist
-    */
+    
     static async signup(req, res) {
         if (isEmpty(req.body)) {
             return res.status(400).send({ status: 400, message: 'Empty fields' });

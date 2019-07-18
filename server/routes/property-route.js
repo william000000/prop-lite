@@ -18,7 +18,4 @@ router.patch('/property/:id/sold', authenticate,property.markSold);
 router.get('/property', property.allProperties)
 router.get('/property/:id', property.specificProperty);
 router.delete('/property/:id', authenticate,property.delete);
-
 export default router;
-
-

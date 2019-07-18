@@ -13,7 +13,6 @@ const dropTable = [
     `DROP TABLE IF EXISTS properties cascade`,
     `DROP TABLE IF EXISTS users cascade`,
 ];
-
 const dropTables = async () => {
     
         for (const data of dropTable) {
