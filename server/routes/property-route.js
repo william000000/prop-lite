@@ -6,7 +6,6 @@ import flag from '../control/flag-control';
 import validFlag from '../validations/flagValidations';
 import cloudinary from '../helper/cloudinary';
 import tokens from '../helper/authentication';
-import admin from '../helper/admin';
 const router = express.Router();
 
 const { createProperty } = validateProperty;
@@ -14,7 +13,7 @@ const { authenticate } = tokens;
 
 router.post('/property',cloudinary,createProperty,authenticate, property.create);
 router.post('/property/report/:id', validFlag.validateflags,flag.report);
-router.patch('/property/:id',createProperty,property.updateProperty);
+router.patch('/property/:id',createProperty,authenticate,property.updateProperty);
 router.patch('/property/:id/sold', property.markSold);
 router.get('/property', property.allProperties)
 router.get('/property/:id', property.specificProperty);
