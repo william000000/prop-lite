@@ -68,15 +68,24 @@ class Property {
             res.status(200).send({ status: 200, data: isProperty });
         } else res.status(404).send({ status: 404, message: "property not found" });
     }
-    static markSold(req, res) {
-        const isProperty = property.find(p => p.id == req.params.id);
-        if (isProperty) {
-            if (isProperty.status === 'available') isProperty.status = 'sold';
-            else isProperty.status = 'available';
-
-            res.status(200).send({ status: 200, data: isProperty });
+    
+    static async markSold(req, res) {
+        const emailInLoad = req.payload.email;// I nee to place the token;
+        const id =  req.params.id;
+        try{
+        const oneProperty = await executeQuery(queries[1].getOne, [id]);
+        if(oneProperty.length!==0){
+            if(oneProperty[0].owner == emailInLoad){
+                if(oneProperty[0].status === 'sold'){
+                    const undoSold = await executeQuery(queries[1].undoMarkSold,[id]);
+                    return res.status(200).send({status:200, data:undoSold});
+                } else {const updateSold = await executeQuery(queries[1].markSold, [id]);
+                return res.status(200).send({ status: 200, data: updateSold });}
+            }else return res.status(403).send({status:403,error:'This property does not belong to you'});
+        }else return res.status(404).send({status:404,error:'property not found'});
+        }catch(e){
+            return res.status(400).send({status:400, error:e.message});
         }
-        else res.status(404).send({ status: 404, message: "Property not found" });
     }
     static async delete(req, res) {
         const id = parseInt(req.params.id);

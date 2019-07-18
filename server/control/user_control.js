@@ -20,7 +20,7 @@ class User {
     */
     static async signup(req, res) {
         if (isEmpty(req.body)) {
-            return res.status(401).send({ status: 'error', message: 'Empty fields' });
+            return res.status(400).send({ status: 400, message: 'Empty fields' });
         }
         const { email, first_name, last_name, password, phoneNumber, address } = req.body;
         const exist = await executeQuery(queries[0].isExist, [email]);
@@ -48,13 +48,12 @@ class User {
     }
     static async signin(req, res) {
         if (isEmpty(req.body)) {
-            return res.status(401).send({ status: 'error', message: 'Empty fields' });
+            return res.status(400).send({ status: 400, message: 'Empty fields' });
         }
         try {
            const { email, password } = req.body;
            const aUser = await executeQuery(queries[0].isExist, [email]);
            const validPass = bcrypt.compareSync(password,aUser[0].password); 
-           console.log()
            if (aUser[0].email) {
                if(validPass){
                    const token = jwt.sign({ email: aUser[0].email}, process.env.secretkey);

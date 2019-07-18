@@ -9,8 +9,8 @@ let queries = [
     {
         create: `INSERT INTO properties (owner, price, state, city, address,type,image) VALUES($1,$2,$3,$4,$5,$6,$7) RETURNING *`,
         update: `UPDATE properties SET price = $1, state = $2 , city = $3, address = $4 ,type = $5 WHERE id = $6 RETURNING *`,
-        markSold: `UPDATE properties SET status = $1 WHERE id = $1`,
-        undoMarkSold: `UPDATE properties SET status = $1 WHERE id = $1`,
+        markSold: `UPDATE properties SET status = 'sold' WHERE id = $1 RETURNING *`,
+        undoMarkSold: `UPDATE properties SET status = 'available' WHERE id = $1 RETURNING *`,
         delete:`DELETE FROM properties WHERE id = $1`,
         getAll: `SELECT p.*, u.email,u.phonenumber from properties p, users u where p.id = u.id and p.owner = u.email`,
         getType: `SELECT * FROM properties WHERE type = $1`,
