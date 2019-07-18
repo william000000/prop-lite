@@ -14,7 +14,7 @@ const { authenticate } = tokens;
 router.post('/property',cloudinary,createProperty,authenticate, property.create);
 router.post('/property/report/:id', validFlag.validateflags,flag.report);
 router.patch('/property/:id',createProperty,authenticate,property.updateProperty);
-router.patch('/property/:id/sold', property.markSold);
+router.patch('/property/:id/sold', authenticate,property.markSold);
 router.get('/property', property.allProperties)
 router.get('/property/:id', property.specificProperty);
 router.delete('/property/:id', authenticate,property.delete);

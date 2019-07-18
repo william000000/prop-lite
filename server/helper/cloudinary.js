@@ -2,7 +2,7 @@ import cloudinary from "cloudinary";
 import dotenv from "dotenv";
 import url from "url";
 
-const cloudinar = (req, res, next) => {
+const cloudinar = (req, res, next) => { 
     dotenv.config();
     const cloudinary_url = url.parse("cloudinary://623643851873444:OY2A4wwoW1if6JTm7clxik2v7TY@prolite");
     cloudinary.config({
