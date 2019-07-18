@@ -57,17 +57,17 @@ class User {
            console.log()
            if (aUser[0].email) {
                if(validPass){
-                    const token  = jwt.sign({email:aUser[0].email}, process.env.secretkey);
+                   const token = jwt.sign({ email: aUser[0].email}, process.env.secretkey);
                     const results = await executeQuery(queries[0].login, [email]);
                     res.status(200).send({
                         status:200, 
-                        token, 
+                        token,
                         data: {
                             email:results[0].email,
                             firstname:results[0].first_name,
                             lastname:results[0].last_name,
                             phoneNumber:results[0].phonenumber,
-                            address:results[0].address
+                            address:results[0].address,
                         }
                     });
                 }else return res.status(401).send({status:401,error:'Wrong Password'});
