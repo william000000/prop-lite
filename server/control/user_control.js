@@ -20,7 +20,7 @@ class User {
         const { email, first_name, last_name, password, phoneNumber, address } = req.body;
         const exist = await executeQuery(queries[0].isExist, [email]);
         if (exist[0]) {
-            return res.status(401).send({ status: 'error', message: 'User already exist!' });
+            return res.status(401).send({ status: '401', error: 'User already exist!' });
         }
         const hashPass = bcrypt.hashSync(password, 10);
         const newUser = [

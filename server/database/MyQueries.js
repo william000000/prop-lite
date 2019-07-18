@@ -12,7 +12,7 @@ let queries = [
         markSold: `UPDATE properties SET status = 'sold' WHERE id = $1 RETURNING *`,
         undoMarkSold: `UPDATE properties SET status = 'available' WHERE id = $1 RETURNING *`,
         delete:`DELETE FROM properties WHERE id = $1`,
-        getAll: `SELECT p.*, u.email,u.phonenumber from properties p, users u where p.id = u.id and p.owner = u.email`,
+        getAll: `SELECT * FROM properties`,
         getType: `SELECT * FROM properties WHERE type = $1`,
         getOne: `SELECT * FROM properties WHERE id = $1`,
         isOwner: `SELECT * FROM properties WHERE owner = $1`
