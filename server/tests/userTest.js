@@ -49,7 +49,7 @@ describe("Authentication testss", () => {
             });
 
     });
-    it("Should not be able to login when password is empty",(done) => {
+    it("Should not be able to login when password is empty", (done) => {
         chai.request(app).post("/api/v1/auth/signin").send({
             email: "john.doe@gmail.com",
             password: ""
@@ -58,7 +58,7 @@ describe("Authentication testss", () => {
                 res.should.has.status(401);
                 done();
             });
-            setTimeout(done,2500);
+        setTimeout(done, 2500);
 
     });
 
@@ -72,7 +72,7 @@ describe("Authentication testss", () => {
             .end((err, res) => {
                 res.should.has.status(401);
                 done();
-        });
+            });
         setTimeout(done, 2500);
     });
     it("Should not be able to signup when email is empty", (done) => {
@@ -83,7 +83,7 @@ describe("Authentication testss", () => {
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
-        });
+            });
     });
     it("Should not be able to signup when first name is empty", (done) => {
         chai.request(app).post("/api/v1/auth/signup").send({
@@ -97,7 +97,7 @@ describe("Authentication testss", () => {
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
-        });
+            });
     });
     it("Should not be able to signup when first name length is less or equal to 1", (done) => {
         chai.request(app).post("/api/v1/auth/signup").send({
@@ -111,7 +111,7 @@ describe("Authentication testss", () => {
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
-        });
+            });
     });
     it("Should not be able to signup when first name has whitespaces", (done) => {
         chai.request(app).post("/api/v1/auth/signup").send({
@@ -125,9 +125,9 @@ describe("Authentication testss", () => {
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
-        });
+            });
     });
-    
+
     it("Should not be able to signup when first name is invalid", (done) => {
         chai.request(app).post("/api/v1/auth/signup").send({
             email: "john.doe@gmail.com",
@@ -140,9 +140,9 @@ describe("Authentication testss", () => {
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
-        });
+            });
     });
-    
+
     it("Should not be able to signup when last name is empty", (done) => {
         chai.request(app).post("/api/v1/auth/signup").send({
             email: "john.doe@gmail.com",
@@ -155,9 +155,9 @@ describe("Authentication testss", () => {
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
-        });
+            });
     });
-    
+
     it("Should not be able to signup when last name is invalid", (done) => {
         chai.request(app).post("/api/v1/auth/signup").send({
             email: "john.doe@gmail.com",
@@ -170,7 +170,7 @@ describe("Authentication testss", () => {
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
-        });
+            });
     });
     it("Should not be able to signup when last name has whitespaces", (done) => {
         chai.request(app).post("/api/v1/auth/signup").send({
@@ -198,7 +198,7 @@ describe("Authentication testss", () => {
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
-        });
+            });
     });
     it("Should not be able to signup when password length is less than 5", (done) => {
         chai.request(app).post("/api/v1/auth/signup").send({
@@ -212,7 +212,7 @@ describe("Authentication testss", () => {
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
-        });
+            });
     });
     it("Should not be able to signup when phoneNumber is empty", (done) => {
         chai.request(app).post("/api/v1/auth/signup").send({
@@ -226,7 +226,7 @@ describe("Authentication testss", () => {
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
-        });
+            });
     });
     it("Should not be able to signup when phoneNumber is invalid", (done) => {
         chai.request(app).post("/api/v1/auth/signup").send({
@@ -240,7 +240,7 @@ describe("Authentication testss", () => {
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
-        });
+            });
     });
     it("Should not be able to signup when phoneNumber length is less than 10", (done) => {
         chai.request(app).post("/api/v1/auth/signup").send({
@@ -254,7 +254,7 @@ describe("Authentication testss", () => {
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
-        });
+            });
     });
     it("Should not be able to signup when address length is less than 2", (done) => {
         chai.request(app).post("/api/v1/auth/signup").send({
@@ -268,7 +268,7 @@ describe("Authentication testss", () => {
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
-        });
+            });
     });
     it("Should not be able to signup when address is empty", (done) => {
         chai.request(app).post("/api/v1/auth/signup").send({
@@ -282,7 +282,7 @@ describe("Authentication testss", () => {
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
-        });
+            });
     });
     it("Should not be able to signup when address has whitespaces", (done) => {
         chai.request(app).post("/api/v1/auth/signup").send({
@@ -296,7 +296,7 @@ describe("Authentication testss", () => {
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
-        });
+            });
     });
     it("Should not be able to signup when address has whitespaces", (done) => {
         chai.request(app).post("/api/v1/auth/signup").send({
@@ -310,10 +310,10 @@ describe("Authentication testss", () => {
             .end((err, res) => {
                 res.should.has.status(400);
                 done();
-        });
+            });
     });
 
-    it('should not be able to signup when empty fields', (done)=>{
+    it('should not be able to signup when empty fields', (done) => {
         chai.request(app).post('/api/v1/auth/signup').send({
             email: "",
             first_name: "",
@@ -321,7 +321,7 @@ describe("Authentication testss", () => {
             password: "",
             phoneNumber: "",
             address: ""
-        }).end((err,res)=>{
+        }).end((err, res) => {
             res.should.has.status(400);
             done();
         })
