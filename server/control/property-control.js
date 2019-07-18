@@ -29,57 +29,20 @@ class Property {
 
     }
 
-    static updateProperty(req, res) {
-        const { price, state, status, address, type, city } = req.body;
-        let prices;
-        let states;
-        let statuss;
-        let addresses;
-        let types;
-        let citys;
-
-        try {
-            const token = jwt.verify(req.headers.token, process.env.secretKey);
-            const isOwner = property.find(k => k.owner == token.email);
-            const isPropertyExist = property.find(p => p.id == req.params.id);
-            if (!isPropertyExist) {
-                return res.status(404).send({ status: 404, error: "unknown property" });
-            }
-
-            if (isOwner.id == req.params.id) {
-                property.map(p => {
-                    p.price = price
-                    p.state = state,
-                        p.city = city,
-                        p.address = address,
-                        p.type = type
-
-                    prices = p.price,
-                        states = p.state,
-                        citys = p.city,
-                        addresses = p.address,
-                        types = p.type
-
-                    return p;
-                });
-                res.status(200).send({
-                    status: "success",
-                    data: {
-                        status: 'available',
-                        prices,
-                        states,
-                        citys,
-                        addresses,
-                        types
-                    }
-                });
-            }
-            else {
-                return res.status(403).send({ status: 403, error: "your not the owner of that property" });
-            }
-
-        } catch (e) {
-            return res.status(400).send({ error: "invalid token" });
+    static async updateProperty(req, res) {
+        const { price, state, address, type, city } = req.body;
+        const id = req.params.id;
+        const emailPayload = req.payload.email;
+        try{
+            const aProperty = await executeQuery(queries[1].getOne,[id]);       
+        if(aProperty.length !== 0){
+            if(aProperty[0].owner == emailPayload){
+                const updateQuery = await executeQuery(queries[1].update, [price, state, city, address, type, id]);
+                res.status(200).send({status:200, data:updateQuery});
+            }else return res.status(403).send({status:403, error:'Not your property'})
+        }else return res.status(404).send({status:404, error: 'Property not found'});
+        }catch(err){
+            res.status(400).send({status:400,error:err.message});
         }
 
     }

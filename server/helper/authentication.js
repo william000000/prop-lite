@@ -10,7 +10,7 @@ class Tokens{
         if (!token) return res.status(401).send({ status: 401, error: 'Access Denied. We need a token' });
         try {
             const payload = jwt.verify(token, process.env.secretKey);
-            req.payload = payload;
+            req.payload = payload; 
             next();
         } catch (ex) {
             return res.status(400).send({ status: 400, error: 'Invalid token' });
