@@ -14,11 +14,11 @@ describe("before each", () => {
 })
 
 
-describe("Authentication tests", () => {
+describe("Authentication testss", () => {
     it("Should be able to login", (done) => {
         chai.request(app).post("/api/v1/auth/signin").send({
             email: "john.doe@gmail.com",
-            password: "$2b$10$Ckxwq0bGQS2ToJOV0hmqNOHaf.OCBYItXKqVPOT2NvnSkvv8AnYg6"
+            password: "jordan123"
         })
             .end((err, res) => {
                 res.should.has.status(200);

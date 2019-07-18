@@ -14,6 +14,9 @@ app.use(bodyParser.json());
 app.use("/api/v1/auth/", authRouter);
 app.use("/api/v1/", propRouter);
 app.use("/api/v1/", flagRouter);
+app.use("*", (req,res)=>{
+    res.status(404).send({status:404, error:'No page found on that route'});
+    });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
