@@ -108,19 +108,19 @@ class Property {
         }
         else res.status(404).send({ status: 404, message: "Property not found" });
     }
-    static delete(req, res) {
-        const isProperty = property.find(p => p.id == req.params.id);
-        if (isProperty) {
-            res.status(200).send({
-                status: "success",
-                message: 'deleted successfully',
-                data: isProperty
-            });
-            const indexes = property.indexOf(isProperty);
-            property.splice(indexes, 1);
-        } else {
-            res.status(404).send({ status: 404, message: "Property not found" });
-        }
+    static async delete(req, res) {
+        const id = parseInt(req.params.id);
+        const emails = req.payload.email;
+        try{
+        const findProperty = await executeQuery(queries[1].getOne, [id]);        
+        if(findProperty.length!==0){
+            if(findProperty[0].owner == emails){
+                res.status(200).send({status:200, message:'deleted'});
+            }else return res.status(403).send({status:403, error:'Not your property'});
+        }else return res.status(404).send({status:404,error:'Property not found'});
+    }catch(e){
+        res.status(400).send(e.message);
+    }
     }
 }
 export default Property;
