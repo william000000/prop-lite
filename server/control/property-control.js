@@ -95,6 +95,7 @@ class Property {
         const findProperty = await executeQuery(queries[1].getOne, [id]);        
         if(findProperty.length!==0){
             if(findProperty[0].owner == emails){
+                await executeQuery(queries[1].delete, [id]); 
                 res.status(200).send({status:200, message:'deleted'});
             }else return res.status(403).send({status:403, error:'Not your property'});
         }else return res.status(404).send({status:404,error:'Property not found'});
