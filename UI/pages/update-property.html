@@ -43,11 +43,6 @@
         <section class="prop-info">
             <form autocomplete="off">
                 <h3>Update Info</h3>
-                <select id="status" width="300px">
-                    <option hidden>Property Status</option>
-                    <option value="Sold">Sold</option>
-                    <option value="Available">Available</option>
-                </select><br>
                 <select id="types">
                     <option hidden>Property Type</option>
                     <option value="Apartments">Apartment</option>
@@ -60,13 +55,11 @@
                 <input type="text" name="" id="address" placeholder="Your Sector" required><br>
                 <input type="number" name="" id="price" placeholder="Price" required><br>
                 <input type="tel" name="phone" id="phone" placeholder="Your telephone number" required><br>
-                <label for="decription">Description</label><br>
-                <textarea name="" id="" cols="30" rows="5">
-                </textarea>
+                <label for="decription">Description</label><br><textarea name="" id="" cols="30" rows="5"></textarea>
                 <label for="photo">Photo</label>
                 <input type="file" name="" id="photos" multiple><br>
-                <input type="submit" value="Submit">
             </form>
+            <a href="./prop-details.html" class="submit"><input type="submit" value="Update Info"></a>
         </section>
     </div>
     <!-- Main section ends -->

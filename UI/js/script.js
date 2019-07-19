@@ -20,3 +20,4 @@ function closeModal() {
 function message() {
     confirm('Are you sure you want to delete it?');
 }
+

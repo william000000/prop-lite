@@ -1,0 +1,300 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Property-Lite",
+        "description": "Property for lent",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "host": "prop-lite.herokuapp.com",
+    "basePath": "/api/v1",
+    "tags": [
+        {
+            "name": "Users",
+            "description": "API for users in the system"
+        },
+        {
+            "name": "property",
+            "description": "API for property sale Ads in the system"
+        }
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/auth/signup": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Create new user in system",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "User that we want to create",
+                        "schema": {
+                            "required": [
+                                "email",
+                                "first_name",
+                                "last_name",
+                                "email",
+                                "password",
+                                "phoneNumber",
+                                "address"
+                            ],
+                            "properties": {
+                                "first_name": {
+                                    "type": "string"
+                                },
+                                "last_name": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "type": "string"
+                                },
+                                "phoneNumber": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "New user is created",
+                        "schema": {
+                            "properties": {
+                                "status": {
+                                    "type": "integer"
+                                },
+                                "mesage": {
+                                    "type": "integer"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/User"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Did not provide a required fields",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "409": {
+                        "description": "User already exist",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/signin": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "description": "Sign user in the system",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "Sign in the user",
+                        "schema": {
+                            "required": [
+                                "email",
+                                "password"
+                            ],
+                            "properties": {
+                                "email": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User successfully logged in",
+                        "schema": {
+                            "properties": {
+                                "status": {
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "type": "integer"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/User"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Email or password incorrect",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/property": {
+            "post": {
+                "tags": [
+                    "property"
+                ],
+                "description": "Creates a new property sale Ad",
+                "parameters": [
+                    {
+                        "name": "x-token",
+                        "in": "header",
+                        "description": "User token",
+                        "required": false
+                    },
+                    {
+                        "name": "property",
+                        "in": "body",
+                        "description": "Creates a new property sale Ad",
+                        "schema": {
+                            "required": [
+                                "price",
+                                "state",
+                                "city",
+                                "address",
+                                "type",
+                                "image"
+                            ],
+                            "properties": {
+                                "price": {
+                                    "type": "integer"
+                                },
+                                "state": {
+                                    "type": "string"
+                                },
+                                "city": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "type": "number"
+                                },
+                                "type": {
+                                    "type": "number"
+                                },
+                                "image": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "User successfully Create property",
+                        "schema": {
+                            "properties": {
+                                "status": {
+                                    "type": "integer"
+                                },
+                                "message": {
+                                    "type": "integer"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/property"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Did not provide a required fiels",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Invalid token",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "/property/{propertyId}": {
+                "parameters": [
+                    {
+                        "name": "x-token",
+                        "in": "header",
+                        "description": "User token",
+                        "required": false
+                    },
+                    {
+                        "name": "propertyId",
+                        "in": "path",
+                        "required": true,
+                        "description": "ID of the property sale Ad that we want to find",
+                        "type": "string"
+                    }
+                ],
+                "get": {
+                    "tags": [
+                        "property"
+                    ],
+                    "summary": "Get propertyAd with given ID",
+                    "responses": {
+                        "200": {
+                            "description": "property Ad is found",
+                            "schema": {
+                                "properties": {
+                                    "status": {
+                                        "type": "integer"
+                                    },
+                                    "data": {
+                                        "type": "array",
+                                        "$ref": "#/definitions/property"
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description": "property ID not found",
+                            "schema": {
+                                "$ref": "#/definitions/Error"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }        
+}    

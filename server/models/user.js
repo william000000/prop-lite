@@ -4,7 +4,7 @@ let users = [
         email:"jokayinamura@gmail.com",
         first_name:"Jordan",
         last_name:"Kayinamura",
-        password:"danger",
+        password:"$2b$10$Ckxwq0bGQS2ToJOV0hmqNOHaf.OCBYItXKqVPOT2NvnSkvv8AnYg6",
         phoneNumber:"0781289123",
         address:"kgl",
         isAdmin:false
@@ -14,7 +14,7 @@ let users = [
         email: "john.doe@gmail.com",
         first_name: "John",
         last_name: "Doe",
-        password: "anger",
+        password: "$2b$10$Ckxwq0bGQS2ToJOV0hmqNOHaf.OCBYItXKqVPOT2NvnSkvv8AnYg6",
         phoneNumber: "0781289231",
         address: "huye",
         isAdmin: false
@@ -24,7 +24,7 @@ let users = [
         email: "doejane@gmail.com",
         first_name: "Jane",
         last_name: "Doe",
-        password: "flanger",
+        password: "$2b$10$Ckxwq0bGQS2ToJOV0hmqNOHaf.OCBYItXKqVPOT2NvnSkvv8AnYg6",
         phoneNumber: "0781649123",
         address: "USA",
         isAdmin: false

@@ -1,64 +1,77 @@
 import user from "../models/user";
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
-import express from "express";
-import bodyParser from "body-parser";
 import isEmpty from 'lodash.isempty';
-
-const app = express();
+import dotenv from 'dotenv';
+import bcrypt from 'bcrypt';
+import queries from '../database/MyQueries';
+import execute from '../database/execute';
+import executeQuery from "../database/execute";
+import { Pool } from 'pg';
 
 dotenv.config();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
 
 class User {
-    static signup(req, res) {
+    
+    static async signup(req, res) {
         if (isEmpty(req.body)) {
-            return res.status(400).send({ status: 'error', message: 'Empty fields' });
+            return res.status(400).send({ status: 400, message: 'Empty fields' });
         }
-        const oneUser = user.find(u => u.email === req.body.email);
-        if (oneUser) {
-            return res.status(400).send({
-                status: "error",
-                message: "User already exist"
-            });
+        const { email, first_name, last_name, password, phoneNumber, address } = req.body;
+        const exist = await executeQuery(queries[0].isExist, [email]);
+        if (exist[0]) {
+            return res.status(409).send({ status: '409', error: 'User already exist!' });
         }
-        const newUser = {
-            id: user.length + 1,
-            email: req.body.email,
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            password: req.body.password,
-            phoneNumber: req.body.phoneNumber,
-            address: req.body.address,
-            isAdmin: false
+        const hashPass = bcrypt.hashSync(password, 10);
+        const newUser = [
+            email,
+            first_name,
+            last_name,
+            hashPass,
+            phoneNumber,
+            address
+        ];
+        const createUser = await executeQuery(queries[0].create, newUser);
+        const token = jwt.sign({ email: createUser[0].email }, process.env.secretkey);
+        if (createUser) {
+            return res.status(201).send({
+                 status: 201,
+                  token, 
+                  data:{email,first_name,last_name, phoneNumber,address} 
+                });
         }
-            const token = jwt.sign({ email: newUser.email }, process.env.secretKey);
-            user.push(newUser);
-            res.status(201).send({
-                status: "success",
-                data: {
-                    token,
-                    newUser
-                }
-            })
+    }
+    static async signin(req, res) {
+        if (isEmpty(req.body)) {
+            return res.status(400).send({ status: 400, message: 'Empty fields' });
         }
-    static signin(req, res) {
-        if(isEmpty(req.body)){
-            return res.status(400).send({status:'error', message:'Empty fields'});
+        try {
+           const { email, password } = req.body;
+           const aUser = await executeQuery(queries[0].isExist, [email]);
+           const validPass = bcrypt.compareSync(password,aUser[0].password); 
+           if (aUser[0].email) {
+               if(validPass){
+                   const token = jwt.sign({ email: aUser[0].email}, process.env.secretkey);
+                    const results = await executeQuery(queries[0].login, [email]);
+                    res.status(200).send({
+                        status:200, 
+                        token,
+                        data: {
+                            email:results[0].email,
+                            firstname:results[0].first_name,
+                            lastname:results[0].last_name,
+                            phoneNumber:results[0].phonenumber,
+                            address:results[0].address,
+                        }
+                    });
+                }else return res.status(401).send({status:401,error:'Wrong Password'});
+           }
+           else res.status(401).send({status:401, error:'Invalid Email'});
         }
-        const oneUser = user.find(user => user.email === req.body.email && user.password === req.body.password);
-            if (!oneUser) {
-                return res.status(400).send({ status: 400, error: "invalid user account" })
-            }
-            else {
-            const token = jwt.sign({ id: oneUser.id }, process.env.secretkey);
-            res.status(200).send({
-                status: 200,
-                token: token,
-                data: oneUser
-            });
+        catch (e) {
+            res.status(401).send({status:401, error:'Invalid data'});
         }
+
     }
 }
 

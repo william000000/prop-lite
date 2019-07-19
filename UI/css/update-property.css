@@ -131,7 +131,6 @@ label{
 }
 h3{
     text-align: center;
-    background: rgb(255, 190, 50);
     color: white;
     padding: 5px;
     margin: 10px 0;
@@ -157,13 +156,14 @@ select{
     border-radius: 5px;
     border: none;
 }
-input[type=submit]{
+.submit input[type=submit]{
     width: 300px;
+    margin: 10px 0 10px 20px;
     background: rgb(255, 190, 50);
     color: white;
     font-weight: bold;
 }
-input[type=submit]:hover{
+.submit input[type=submit]:hover{
     cursor: pointer;
     background: #1234ad;
     color: white;
@@ -224,6 +224,16 @@ footer img,ul{
     nav{
         width: 320px;
         overflow-x: hidden;
+    }
+    .submit input[type=submit]{
+        width: 300px;
+        margin-left: 10px;
+    }
+}
+@media (max-width:384px){
+    .submit input[type=submit]{
+        width: 96%;
+        margin-left: 10px;
     }
 }
 @media (max-width:380px){
