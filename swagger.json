@@ -19,7 +19,7 @@
         {
             "name": "property",
             "description": "API for property sale Ads in the system"
-        },
+        }
     ],
     "schemes": [
         "http",
