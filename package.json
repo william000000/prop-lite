@@ -8,7 +8,8 @@
     "start": "npm run db && nodemon --exec babel-node ./server/app.js",
     "dropTable": "babel-node server/database/db_test_data.js",
     "db": "babel-node server/database/tables.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "copytest":"cross-env NODE_ENV=testing babel-node ./server/models/index.js createTables"
   },
   "repository": {
     "type": "git",
