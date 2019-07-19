@@ -33,7 +33,7 @@ class User {
             address
         ];
         const createUser = await executeQuery(queries[0].create, newUser);
-        const token = jwt.sign({ email: createUser[0].email }, process.env.secretkey);
+        const token = jwt.sign({ id: createUser[0].id }, process.env.secretkey);
         if (createUser) {
             return res.status(201).send({
                  status: 201,
@@ -55,7 +55,7 @@ class User {
            const validPass = bcrypt.compareSync(password,aUser[0].password); 
            if (aUser[0].email) {
                if(validPass){
-                   const token = jwt.sign({ email: aUser[0].email}, process.env.secretkey);
+                   const token = jwt.sign({ id: aUser[0].id}, process.env.secretkey);
                     const results = await executeQuery(queries[0].login, [email]);
                     res.status(200).send({
                         status:200, 

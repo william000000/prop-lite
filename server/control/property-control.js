@@ -34,11 +34,11 @@ class Property {
     static async updateProperty(req, res) {
         const { price, state, address, type, city } = req.body;
         const id = req.params.id;
-        const emailPayload = req.payload.email;
+        const idPayload = req.payload.id;
         try{
             const aProperty = await executeQuery(queries[1].getOne,[id]);       
         if(aProperty.length !== 0){
-            if(aProperty[0].owner == emailPayload){
+            if(aProperty[0].owner == idPayload){
                 const updateQuery = await executeQuery(queries[1].update, [price, state, city, address, type, id]);
                 res.status(200).send({status:200, data:updateQuery});
             }else return res.status(403).send({status:403, error:'Not your property'})
@@ -71,7 +71,7 @@ class Property {
     }
     
     static async markSold(req, res) {
-        const emailInLoad = req.payload.email;// I nee to place the token;
+        const IDInLoad = req.payload.id;// I nee to place the token;
         const id =  req.params.id;
         try{
         const oneProperty = await executeQuery(queries[1].getOne, [id]);
@@ -90,11 +90,11 @@ class Property {
     }
     static async delete(req, res) {
         const id = parseInt(req.params.id);
-        const emails = req.payload.email;
+        const ids = req.payload.id;
         try{
         const findProperty = await executeQuery(queries[1].getOne, [id]);        
         if(findProperty.length!==0){
-            if(findProperty[0].owner == emails){
+            if(findProperty[0].owner == ids){
                 await executeQuery(queries[1].delete, [id]); 
                 res.status(200).send({status:200, message:'deleted'});
             }else return res.status(403).send({status:403, error:'Not your property'});
