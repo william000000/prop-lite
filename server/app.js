@@ -18,6 +18,9 @@ app.use("/api/v1/", propRouter);
 app.use("*", (req,res)=>{
     res.status(404).send({status:404, error:'No page found on that route'});
     });
+app.use("https://prop-lite.herokuapp.com", (req,res)=>{
+    res.status(404).send('Welcome to PropertyProLite');
+    });
 
 const PORT = process.env.PORT || 8888;
 app.listen(PORT, () => {
