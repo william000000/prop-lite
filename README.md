@@ -17,7 +17,7 @@ Property Pro-Lite is a web platform where any user can advertise a property and/
 This link will take you to my tracker board [Pivotal Tracker Board](https://www.pivotaltracker.com/projects/2353932)
 
 #### UI Template
-Follow this link to get to my UI template [UI](https://jo-rdan.github.io/prop-lite/index.html)
+Follow this link to get to my UI template [UI](https://jo-rdan.github.io/prop-lite/UI/pages/signup.html)
 
 ##### Tools used
 * Text Editor: Visual Studio Code
