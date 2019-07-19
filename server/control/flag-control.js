@@ -1,34 +1,24 @@
 import property from "../models/property-model";
 import flag from "../models/flag";
-import bodyParser from "body-parser";
-import express from "express";
-const app = express();
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
+import queries from '../database/MyQueries';
+import executeQuery from '../database/execute';
 
 class Flags {
-    static report(req, res) {
+    static async reports(req, res) {
+        const email = req.payload.email;
         const { reason, description } = req.body;
-        const isPropertyExist = property.find(f => f.id == parseInt(req.params.id));
-        if (!isPropertyExist) {
+        const properties_id = req.params.id;
+        const isPropertyExist = await executeQuery(queries[1].isPropertyExist, [properties_id]);
+        if (!isPropertyExist.length>0) {
             return res.status(404).send({ status: 404, message: "Property not found" });
         }
-        const newFlag = {
-            id: flag.length + 1,
-            property_id:req.params.id,
-            reason,
-            description,
-            created_on: new Date()
-        }
+        const newFlag = await executeQuery(queries[2].createFlags, [properties_id, email, reason, description]);
 
         if (newFlag)
-            property.push(newFlag);
-        res.status(201).send({
-            status: "success",
-            data: newFlag
-        });
+            res.status(201).send({
+                status: 201,
+                data: newFlag
+            });
     }
 }
 export default Flags;

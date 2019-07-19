@@ -1,16 +1,24 @@
+
 import express from "express"
 import property from "../control/property-control";
-import cloudinsry from '../config/cloudinaryConfig';
+import validateProperty from '../validations/propertyVaildation';
+import flag from '../control/flag-control';
+import validFlag from '../validations/flagValidations';
+import cloudinary from '../helper/cloudinary';
+import tokens from '../helper/authentication';
+import flags from '../validations/flagValidations';
 
 const router = express.Router();
 
 const { createProperty } = validateProperty;
+const { authenticate } = tokens;
 
-router.post('/property', cloudinsry,createProperty, property.create);
-router.patch('/property/:id', createProperty,property.updateProperty);
-router.patch('/property/:id/sold', property.markSold);
-router.get('/property', property.allProperties)
+router.post('/property', cloudinary, createProperty, authenticate, property.create);
+router.post('/property/report/:id', flags.validateflags, authenticate, flag.reports);
+router.patch('/property/:id', createProperty, authenticate, property.updateProperty);
+router.patch('/property/:id/sold', authenticate, property.markSold);
+router.get('/property', property.allProperties);
 router.get('/property/:id', property.specificProperty);
-router.delete('/property/:id', property.delete);
-export default router;
+router.delete('/property/:id', authenticate, property.delete);
 
+export default router;

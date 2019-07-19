@@ -81,11 +81,11 @@ ul{
 }
 
 .form{
-    background-color:rgba(0,0,0,0.5);
+    background-color:rgba(0,0,0, 0.95);
     padding: 20px 30px;
     position: relative;
-    width: 50%
-    margin: 30px auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 .form h2{
@@ -109,24 +109,25 @@ input[type="text"], input[type="password"]{
     padding: 13px;
     margin-bottom: 9px;
     color: white;
-    font-weight: bold;
-    font-size: 17px;
+    font-weight: lighter;
+    font-size: 13px;
     width: 248px;
 }
 
 .button{
+    position: relative;
     background:orange;
     outline: none;
     border:none;
+    width: 100%;
     color: black;
     font-weight: bolder;
     font-size: 17px;
-    width: 100%;
-    padding: 10px;
-    margin: 15px auto;
+    padding: 8px;
+    margin:10px 0;
 }
 .button:hover{
-    background:white;
+    color: black;
     cursor: pointer;
 }
 a{
@@ -136,6 +137,7 @@ a{
 a:hover{
     color: white;
     font-size: bold;
+    cursor: pointer;
 }
 .links{
     font-size: 12px;

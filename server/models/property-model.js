@@ -1,30 +1,18 @@
 let property = [
     {
         id: 1,
-        owner: "kayinamura@gmail.com", // user id
+        owner: "john.doe@gmail.com",
         status: "available", // sold,available - default is available
         price: 200,
         state: "kgl", // State where property is located
         city: "gasabo", // City where property is located
         address: "kinyinya",
         type: "apartment", // 2 bedroom, 3 bedroom etc
-        image: "www.res.send-shit.com",
+        image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png",
         created_on: new Date()
     },
     {
-        id: 2,
-        owner: "kayinamura1@gmail.com",
-        status: "available",
-        price: 1000000,
-        state: "kgl",
-        city: "kicukiro",
-        address: "gikondo",
-        type: "house",
-        image:"www.nowhere.no",
-        created_on: new Date()
-    },
-    {
-        id:3,
+        id:2,
         owner:"jo@mails.me",
         status:"available",
         price: 100,
@@ -32,7 +20,7 @@ let property = [
         city:"nyanaxa",
         address:"rqwrfds",
         type:"house",
-        image: "www.nowhere.no",
+        image: "https://res.cloudinary.com/prolite/image/upload/v1562855584/bit0gxxhljfupnnfjfrk.png",
         created_on:new Date()
     }
 ]
