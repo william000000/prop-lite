@@ -62,7 +62,6 @@ const createTables = async () => {
     for (const data of dummyData) {
         await pool.query(data);
     }
-
     pool.end();
 };
 createTables();
