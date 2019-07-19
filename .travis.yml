@@ -8,9 +8,10 @@ env:
     - PORT=5000
     - CLOUDINARY_URL=cloudinary://623643851873444:OY2A4wwoW1if6JTm7clxik2v7TY@prolite
     - DATABASE_URL=postgres://postgres:jordan@127.0.0.1:5432/prop_lite
+    - TEST_DATABASE_URL=postgres://postgres:jordan@127.0.0.1:5432/db_test
 language: node_js
 node_js:
-  - stable
+  - 10.15.3
 branches:
   only:
     - develop
@@ -20,9 +21,9 @@ cache:
   directories:
     - node_modules
 before_script:
-    - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database prop_lite;' -U postgres
 
 script:
-  - npm test
+  - npm run test
 after_success:
   - npm run coverage
