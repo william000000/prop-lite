@@ -67,7 +67,7 @@ class Property {
         const findOne =  await executeQuery(queries[1].getOne,[id]);
         if(findOne.length!==0){
             return res.status(200).send({status:200,data:findOne[0]});
-        }else return res.status(404).send({status:404, error:'Property not found'}); 
+        }else return res.status(404).send({status:404, error:'Property not found!'}); 
     }
     
     static async markSold(req, res) {
