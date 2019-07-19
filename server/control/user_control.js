@@ -40,6 +40,7 @@ class User {
                   data:{email,first_name,last_name, phoneNumber,address} 
                 });
         }
+        return;
     }
     static async signin(req, res) {
         if (isEmpty(req.body)) {

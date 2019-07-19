@@ -81,20 +81,8 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "New user is created",
-                        "schema": {
-                            "properties": {
-                                "status": {
-                                    "type": "integer"
-                                },
-                                "mesage": {
-                                    "type": "integer"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/User"
-                                }
-                            }
-                        }
+                        "description": "New user is created"
+                    
                     },
                     "400": {
                         "description": "Did not provide a required fields",
