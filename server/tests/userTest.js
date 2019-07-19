@@ -15,18 +15,7 @@ describe("before each", () => {
 
 
 describe("Authentication testss", () => {
-    it("Should be able to login", (done) => {
-        chai.request(app).post("/api/v1/auth/signin").send({
-            email: "john.doe@gmail.com",
-            password: "jordan123"
-        })
-            .end((err, res) => {
-                res.should.has.status(200);
-                done();
-            });
-        setTimeout(done, 2500);
 
-    });
     it("Should not be able to login when email is invalid", (done) => {
         chai.request(app).post("/api/v1/auth/signin").send({
             email: "john.doegmail",
