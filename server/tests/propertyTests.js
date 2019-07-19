@@ -551,19 +551,4 @@ describe('Property Tests', () => {
         done();
       });
   });
-
-
-  it("Should delete existing property", (done) => {
-    let id = 1;
-    let TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGdtYWlsLmNvbSIsImlhdCI6MTU2MzQ4MzkwN30.utqXJQx5Xv5DNMP4moIjtkgkIwBb_BGY69hZYBPS70Q';
-
-    chai.request(app)
-      .delete(`/api/v1/property/${id}`)
-      .set("x-token", TOKEN)
-      .end((req, res) => {
-        res.should.have.a.status(200);
-        done();
-      });
-  });
-
 });

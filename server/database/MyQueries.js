@@ -15,7 +15,11 @@ let queries = [
         getAll: `SELECT * FROM properties`,
         getType: `SELECT * FROM properties WHERE type = $1`,
         getOne: `SELECT * FROM properties WHERE id = $1`,
-        isOwner: `SELECT * FROM properties WHERE owner = $1`
+        isOwner: `SELECT * FROM properties WHERE owner = $1`,
+        isPropertyExist:`SELECT * FROM properties where id = $1`
+    },
+    {
+        createFlags: `INSERT INTO flags (properties_id, email, reason, description) VALUES($1,$2,$3,$4) RETURNING *`
     }
 
 ]
