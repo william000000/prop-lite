@@ -10,7 +10,7 @@ env:
     - DATABASE_URL=postgres://postgres:jordan@127.0.0.1:5432/prop_lite  
 language: node_js
 node_js:
-  - 10.15.3
+  - stable
 branches:
   only:
     - develop
@@ -19,12 +19,11 @@ install:
 cache:
   directories:
     - node_modules
-  services:
-    - postgresql
 before_script:
-  - psql -c 'CREATE DATABASE prop_lite;' -U postgres
-
+ - psql -c 'create database prop_lite;' -U postgres
 script:
   - npm run test
 after_success:
   - npm run coverage
+
+
