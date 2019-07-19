@@ -17,6 +17,7 @@ class User {
         if (isEmpty(req.body)) {
             return res.status(400).send({ status: 400, message: 'Empty fields' });
         }
+        try{
         const { email, first_name, last_name, password, phoneNumber, address } = req.body;
         const exist = await executeQuery(queries[0].isExist, [email]);
         if (exist[0]) {
@@ -40,7 +41,9 @@ class User {
                   data:{email,first_name,last_name, phoneNumber,address} 
                 });
         }
-        return;
+    }catch(e){
+        return res.status(400).send(e.message);
+    }
     }
     static async signin(req, res) {
         if (isEmpty(req.body)) {
